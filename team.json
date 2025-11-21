@@ -1,0 +1,293 @@
+{
+    "teams": [
+        {
+            "hlvPho": "Lê Huy Khoa",
+            "hlvTruong": "Trần Công Minh",
+            "id": "VN01",
+            "name": "Đội tuyển QGVN",
+            "players": [
+                {
+                    "address": "Thái Bình, Việt Nam",
+                    "cccd": "",
+                    "contact": "0923456789",
+                    "dob": "08/09/1993",
+                    "goals": 8,
+                    "hieuSuat": {
+                        "banThang": 10,
+                        "chuyenDung": 56,
+                        "diemPhongDo": 8,
+                        "kienTao": 59
+                    },
+                    "honor": "Quả bóng vàng Việt Nam",
+                    "id": "VN002",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Đỗ Hùng Dũng",
+                    "playerID": "VN002",
+                    "position": "Tiền vệ",
+                    "role": "DT",
+                    "salary": 150000.0,
+                    "soAo": 0,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "11/11/2025",
+                        "ghiChu": "Chấn thương dây chằn",
+                        "ngayBatDau": "19/02/2025",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 41,
+                        "danhHieuTaiClub": "vộ địch đna ,vô địch asian cup ",
+                        "doiBongTruoc": "đội tuyển QGVN ",
+                        "ngayGiaNhap": "11/02/2009",
+                        "soTranThiDau": 36,
+                        "theDo": 1,
+                        "theVang": 7
+                    },
+                    "theLuc": {
+                        "canNang": 48.0,
+                        "chieuCao": 156.0,
+                        "mucTheLuc": 5,
+                        "tiLeMo": 8.0
+                    }
+                },
+                {
+                    "address": "Bình Dương, Việt Nam",
+                    "cccd": "232",
+                    "contact": "0934567890",
+                    "dob": "20/10/1997",
+                    "goals": 34,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 0,
+                        "diemPhongDo": 5,
+                        "kienTao": 0
+                    },
+                    "honor": "Vua phá lưới AFF Cup",
+                    "id": "VN003",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Tiến Linh",
+                    "playerID": "VN003",
+                    "position": "Tiền đạo",
+                    "role": "DP",
+                    "salary": 30000.0,
+                    "soAo": 0,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 5,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "",
+                        "soTranThiDau": 0,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 0.0,
+                        "chieuCao": 0.0,
+                        "mucTheLuc": 5,
+                        "tiLeMo": 0.0
+                    }
+                },
+                {
+                    "address": "Hà Nội",
+                    "cccd": "",
+                    "contact": "0702635540",
+                    "dob": "19/07/2005",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 4,
+                        "chuyenDung": 0,
+                        "diemPhongDo": 5,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "VN004",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Trần Đình Trọng",
+                    "playerID": "VN004",
+                    "position": "Trung vệ",
+                    "role": "",
+                    "salary": 50000.0,
+                    "soAo": 0,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 5,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "",
+                        "soTranThiDau": 0,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 0.0,
+                        "chieuCao": 0.0,
+                        "mucTheLuc": 5,
+                        "tiLeMo": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "hlvPho": "Nguyễn Quốc Tuấn",
+            "hlvTruong": "Hoàng Anh Tuấn",
+            "id": "VN23",
+            "name": "U23 Việt Nam",
+            "players": [
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "",
+                    "contact": "0956789012",
+                    "dob": "01/12/2001",
+                    "goals": 8,
+                    "hieuSuat": {
+                        "banThang": 4,
+                        "chuyenDung": 0,
+                        "diemPhongDo": 5,
+                        "kienTao": 0
+                    },
+                    "honor": "Huy chương vàng SEA Games",
+                    "id": "U2301",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Văn Tùng",
+                    "playerID": "U2301",
+                    "position": "Tiền đạo",
+                    "role": "DT",
+                    "salary": 90000.0,
+                    "soAo": 0,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 5,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "",
+                        "soTranThiDau": 0,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 0.0,
+                        "chieuCao": 0.0,
+                        "mucTheLuc": 5,
+                        "tiLeMo": 0.0
+                    }
+                }
+            ]
+        },
+        {
+            "hlvPho": "Trần Văn Phúc",
+            "hlvTruong": "Ngô Quang Trường",
+            "id": "001",
+            "name": "U12 Việt Nam",
+            "players": [
+                {
+                    "address": "QUẢNG NAM",
+                    "cccd": "43534543",
+                    "contact": "0702635540",
+                    "dob": "19-07-2006",
+                    "goals": 20,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 0,
+                        "diemPhongDo": 5,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "U1201",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Hồ Tấn Tài",
+                    "playerID": "U1201",
+                    "position": "ST",
+                    "role": "DT",
+                    "salary": 289.0,
+                    "soAo": 0,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 5,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "",
+                        "soTranThiDau": 0,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 0.0,
+                        "chieuCao": 0.0,
+                        "mucTheLuc": 5,
+                        "tiLeMo": 0.0
+                    }
+                }
+            ]
+        }
+    ]
+}
