@@ -18,4 +18,9 @@ public:
     std::string getNgaySinh() const { return ngaySinh; }
     std::string getQueQuan() const { return queQuan; }
     std::string getThongTinLienLac() const { return thongTinLienLac; }
+
+    void setTen(const std::string &t) { ten = t; }
+    void setNgaySinh(const std::string &ns) { ngaySinh = ns; }
+    void setQueQuan(const std::string &qq) { queQuan = qq; }
+    void setThongTinLienLac(const std::string &ttll) { thongTinLienLac = ttll; }
 };

@@ -4,13 +4,13 @@
             "hlvPho": "Lê Huy Khoa",
             "hlvTruong": "Trần Công Minh",
             "id": "VN01",
-            "name": "Đội tuyển QGVN",
+            "name": "Đội tuyển QGVN ",
             "players": [
                 {
-                    "address": "Thái Bình, Việt Nam",
-                    "cccd": "",
-                    "contact": "0923456789",
-                    "dob": "08/09/1993",
+                    "address": "Thái Bìn",
+                    "cccd": "3423423",
+                    "contact": "092345678",
+                    "dob": "08/09/1994 ",
                     "goals": 8,
                     "hieuSuat": {
                         "banThang": 10,
@@ -26,17 +26,17 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
-                    "name": "Đỗ Hùng Dũng",
+                    "name": "Đỗ Hùng Dũng ",
                     "playerID": "VN002",
-                    "position": "Tiền vệ",
+                    "position": "Tiền Vệ ",
                     "role": "DT",
-                    "salary": 150000.0,
+                    "salary": 160000.0,
                     "soAo": 0,
                     "sucKhoe": {
                         "duKienHoiPhuc": "11/11/2025",
                         "ghiChu": "Chấn thương dây chằn",
                         "ngayBatDau": "19/02/2025",
-                        "trangThai": "Khỏe mạnh"
+                        "trangThai": "Chấn thương nặng"
                     },
                     "tapLuyen": {
                         "cuongDo": "Trung bình",
@@ -61,12 +61,12 @@
                 },
                 {
                     "address": "Bình Dương, Việt Nam",
-                    "cccd": "232",
+                    "cccd": "232124134324 ",
                     "contact": "0934567890",
                     "dob": "20/10/1997",
                     "goals": 34,
                     "hieuSuat": {
-                        "banThang": 0,
+                        "banThang": 19,
                         "chuyenDung": 0,
                         "diemPhongDo": 5,
                         "kienTao": 0
@@ -198,6 +198,59 @@
                     "position": "Tiền đạo",
                     "role": "DT",
                     "salary": 90000.0,
+                    "soAo": 0,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 5,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "",
+                        "soTranThiDau": 0,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 0.0,
+                        "chieuCao": 0.0,
+                        "mucTheLuc": 5,
+                        "tiLeMo": 0.0
+                    }
+                },
+                {
+                    "address": "Quảng nam",
+                    "cccd": "3242334",
+                    "contact": "124332423",
+                    "dob": "29/07/2006",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 0,
+                        "diemPhongDo": 5,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "001",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "nguyễn thái toàn",
+                    "playerID": "001",
+                    "position": "ST",
+                    "role": "DP",
+                    "salary": 100000.0,
                     "soAo": 0,
                     "sucKhoe": {
                         "duKienHoiPhuc": "",

@@ -37,6 +37,7 @@ public:
     std::string getIDDoi() const { return idDoi; }
     std::string getHLVTruong() const { return hlvTruong; }
     std::string getHLVPho() const { return hlvPho; }
+    void setTenDoi(const std::string &ten) { tenDoi = ten; }
     void setHLVTruong(const std::string &ten) { hlvTruong = ten; }
     void setHLVPho(const std::string &ten) { hlvPho = ten; }
     MyVector<Player> &getPlayers() { return cauThu; }

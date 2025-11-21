@@ -576,6 +576,10 @@ private:
     MyVector<InputField> hlvInputs;
     MyVector<InputField> healthInputs;
 
+    bool showEditTeam;
+    int editingTeamIndex2;
+    MyVector<InputField> teamEditInputs;
+
     // Temporary variables for health data editing
     int lastLoadedHealthPlayerIndex;
     int selectedPlayerIndex; // For achievements tab
@@ -617,6 +621,7 @@ public:
                              defaultPlayerPhoto(), showEditPlayer(false), editingPlayerTeam(""), editingTeamIndex(-1), editingPlayerIndex(-1),
                              selectedTeamIndex(-1), healthTab(0), selectedHealthPlayerIndex(-1), selectedHealthTeam(""),
                              showEditHLV(false), editingHLVTeamIndex(-1), lastLoadedHealthPlayerIndex(-1),
+                             showEditTeam(false), editingTeamIndex2(-1),
                              selectedPlayerIndex(-1), lastLoadedAchievementPlayerIndex(-1),
                              tempNgayGiaNhap(""), tempDoiBongTruoc(""), tempBanThangChoClub(0), tempDanhHieuTaiClub(""), tempSoTranThiDau(0), tempTheVang(0), tempTheDo(0),
                              tempTrangThaiSucKhoe(""), tempNgayBatDauChanThuong(""), tempDuKienHoiPhuc(""), tempGhiChuSucKhoe(""),
@@ -717,7 +722,7 @@ public:
         DrawTextEx2(u8"BÓNG ĐÁ", 25, 55, fontSize + 6, ACCENT_1);
         DrawRectangle(25, 85, sidebarWidth - 50, 3, ACCENT_1);
 
-        string tabs[] = {u8"TỔNG QUAN", u8"ĐỘI BÓNG", u8"CẦU THỦ", u8"SỨC KHỎE", u8"THÀNH TÍCH", u8"THỐNG KÊ", u8"TÌM KIẾM"};
+        string tabs[] = {u8"TỔNG QUAN", u8"ĐỘI BÓNG", u8"CẦU THỦ", u8"SỨC KHỎE", u8"THÀNH TÍCH", u8"THỐNG KÊ", u8"TÌM KIẾM & SỬA"};
         for (int i = 0; i < 7; i++)
         {
             Color tabColor = (i == currentTab) ? ACCENT_1 : SIDEBAR_BG;
@@ -1235,6 +1240,13 @@ public:
                           to_string(team.getPlayers().size());
             DrawTextEx2(info, contentX + 30, y + 38, 16, ACCENT_1);
 
+            Button editTeamBtn;
+            editTeamBtn.rect = {(float)(contentX + contentWidth - 240), (float)(y + 15), 110, 40};
+            editTeamBtn.text = u8"ĐỔI TÊN";
+            editTeamBtn.color = ACCENT_1;
+            editTeamBtn.hoverColor = {41, 128, 185, 255};
+            editTeamBtn.draw();
+
             Button deleteBtn;
             deleteBtn.rect = {(float)(contentX + contentWidth - 120), (float)(y + 15), 100, 40};
             deleteBtn.text = u8"XOÁ ĐỘI";
@@ -1242,13 +1254,27 @@ public:
             deleteBtn.hoverColor = {192, 57, 43, 255};
             deleteBtn.draw();
 
+            if (editTeamBtn.isClicked())
+            {
+                editingTeamIndex2 = teamIndex;
+                showEditTeam = true;
+                teamEditInputs.clear();
+            }
+
             if (deleteBtn.isClicked())
             {
-                string teamName = team.getTenDoi();
-                it = clb->getTeams().erase(it);
-                saveToJson(*clb);
-                showMessage(u8"Đã xoá đội: " + teamName);
-                teamDeleted = true;
+                if (team.getPlayers().size() > 0)
+                {
+                    showMessage(u8"Không thể xóa đội còn thành viên!");
+                }
+                else
+                {
+                    string teamName = team.getTenDoi();
+                    it = clb->getTeams().erase(it);
+                    saveToJson(*clb);
+                    showMessage(u8"Đã xoá đội: " + teamName);
+                    teamDeleted = true;
+                }
             }
 
             if (!teamDeleted)
@@ -1914,37 +1940,38 @@ public:
         }
 
         // Tạo form nhập liệu nếu chưa có
-        if (editInputs.size() != 8) // Dùng editInputs
+        if (editInputs.empty())
         {
-            editInputs.clear();
-            int fieldWidth = (popupWidth - 100) / 2;
-            int leftX = popupX + 40;
-            int rightX = popupX + 40 + fieldWidth + 20;
+            editInputs.push_back(InputField({0, 0, 0, 40}, u8"Họ Tên:", 40));
+            editInputs.push_back(InputField({0, 0, 0, 40}, u8"Vị Trí:", 20));
+            editInputs.push_back(InputField({0, 0, 0, 40}, u8"Ngày Sinh:", 20));
+            editInputs.push_back(InputField({0, 0, 0, 40}, "CCCD:", 20));
+            editInputs.push_back(InputField({0, 0, 0, 40}, u8"Quê Quán:", 40));
+            editInputs.push_back(InputField({0, 0, 0, 40}, "SDT:", 11));
+            editInputs.push_back(InputField({0, 0, 0, 40}, u8"Lương:", 20));
 
-            editInputs.push_back(InputField({(float)leftX, (float)(popupY + 90), (float)fieldWidth, 40}, u8"Họ Tên:", 40));
+            // Load dữ liệu
             editInputs[0].text = editingPlayer.getTen();
-
-            editInputs.push_back(InputField({(float)rightX, (float)(popupY + 90), (float)fieldWidth, 40}, u8"Vị Trí:", 20));
             editInputs[1].text = editingPlayer.getViTri();
-
-            editInputs.push_back(InputField({(float)leftX, (float)(popupY + 170), (float)fieldWidth, 40}, u8"Ngày Sinh:", 20));
             editInputs[2].text = editingPlayer.getNgaySinh();
-
-            editInputs.push_back(InputField({(float)rightX, (float)(popupY + 170), (float)fieldWidth, 40}, "CCCD:", 20));
             editInputs[3].text = editingPlayer.getCCCD();
-
-            editInputs.push_back(InputField({(float)leftX, (float)(popupY + 250), (float)fieldWidth, 40}, u8"Quê Quán:", 40));
             editInputs[4].text = editingPlayer.getQueQuan();
-
-            editInputs.push_back(InputField({(float)rightX, (float)(popupY + 250), (float)fieldWidth, 40}, "SDT:", 11));
             editInputs[5].text = editingPlayer.getThongTinLienLac();
-
-            editInputs.push_back(InputField({(float)leftX, (float)(popupY + 330), (float)fieldWidth, 40}, u8"Bàn Thắng:", 10));
-            editInputs[6].text = to_string(editingPlayer.getBanThang());
-
-            editInputs.push_back(InputField({(float)rightX, (float)(popupY + 330), (float)fieldWidth, 40}, u8"Lương:", 20));
-            editInputs[7].text = to_string((int)editingPlayer.getLuong());
+            editInputs[6].text = to_string((int)editingPlayer.getLuong());
         }
+
+        // Cập nhật vị trí input fields theo kích thước popup (mỗi frame)
+        int fieldWidth = (popupWidth - 100) / 2;
+        int leftX = popupX + 40;
+        int rightX = popupX + 40 + fieldWidth + 20;
+
+        editInputs[0].rect = {(float)leftX, (float)(popupY + 90), (float)fieldWidth, 40};
+        editInputs[1].rect = {(float)rightX, (float)(popupY + 90), (float)fieldWidth, 40};
+        editInputs[2].rect = {(float)leftX, (float)(popupY + 170), (float)fieldWidth, 40};
+        editInputs[3].rect = {(float)rightX, (float)(popupY + 170), (float)fieldWidth, 40};
+        editInputs[4].rect = {(float)leftX, (float)(popupY + 250), (float)fieldWidth, 40};
+        editInputs[5].rect = {(float)rightX, (float)(popupY + 250), (float)fieldWidth, 40};
+        editInputs[6].rect = {(float)leftX, (float)(popupY + 330), (float)fieldWidth, 40};
 
         // Vẽ và cập nhật các input
         for (auto &input : editInputs) // Dùng editInputs
@@ -1958,113 +1985,72 @@ public:
         DrawRectangleRounded({(float)(popupX + 40), (float)(popupY + 435), (float)((popupWidth - 80)), 40}, 0.1f, 10, (Color){240, 240, 240, 255});
         DrawTextEx2(editingPlayerTeam, popupX + 55, popupY + 445, 18, ACCENT_1);
 
-        DrawTextEx2(u8"Lưu ý: Bàn thắng và Lương phải là số", popupX + 40, popupY + 500, 14, (Color){127, 140, 141, 255});
+        DrawTextEx2(u8"Lưu ý: Lương phải là số", popupX + 40, popupY + 500, 14, (Color){127, 140, 141, 255});
 
         // Xử lý lưu
         if (saveBtn.isClicked())
         {
-            try
+            // Bỏ validation, cho phép lưu luôn
+            string sSalary = editInputs[6].text;
+            double salary = 0;
+
+            if (!sSalary.empty())
             {
-                string sGoals = editInputs[6].text; // Dùng editInputs
-                string sSalary = editInputs[7].text;
-
-                // Kiểm tra dữ liệu
-                for (char c : sGoals)
+                try
                 {
-                    if (!isdigit(c))
-                    {
-                        showMessage(u8"Bàn thắng phải là số nguyên!");
-                        return;
-                    }
+                    salary = stod(sSalary);
                 }
-
-                bool validSalary = true;
-                bool hasDot = false;
-                for (char c : sSalary)
+                catch (...)
                 {
-                    if (c == '.')
-                    {
-                        if (hasDot)
-                        {
-                            validSalary = false;
-                            break;
-                        }
-                        hasDot = true;
-                    }
-                    else if (!isdigit(c))
-                    {
-                        validSalary = false;
-                        break;
-                    }
-                }
-
-                if (!validSalary)
-                {
-                    showMessage(u8"Lương phải là số!");
-                    return;
-                }
-
-                int goals = sGoals.empty() ? 0 : stoi(sGoals);
-                double salary = sSalary.empty() ? 0 : stod(sSalary);
-
-                // Tạo player mới với thông tin đã sửa
-                Player updatedPlayer(
-                    editingPlayer.getID(),
-                    editInputs[0].text, // Tên - Dùng editInputs
-                    editInputs[2].text, // Ngày sinh
-                    editInputs[4].text, // Quê quán
-                    editInputs[5].text, // SDT
-                    editingPlayer.getMaCauThu(),
-                    editInputs[1].text, // Vị trí
-                    goals,
-                    editingPlayer.getDanhHieu(),
-                    salary,
-                    "",
-                    editingPlayer.getVaiTro(),
-                    editInputs[3].text // CCCD
-                );
-
-                // PHẦN SỬA: Lấy reference đúng cách để cập nhật
-                if (editingTeamIndex >= 0 && editingTeamIndex < (int)clb->getTeams().size())
-                {
-                    // Lấy reference đến MyVector teams
-                    MyVector<Team> &teams = clb->getTeams();
-                    Team &team = teams[editingTeamIndex];
-
-                    // Lấy reference đến MyVector players
-                    MyVector<Player> &players = team.getPlayers();
-
-                    if (editingPlayerIndex >= 0 && editingPlayerIndex < (int)players.size())
-                    {
-                        // Cập nhật player
-                        players[editingPlayerIndex] = updatedPlayer;
-
-                        // Lưu vào JSON
-                        saveToJson(*clb);
-
-                        // Cập nhật lại searchResults nếu đang ở tab tìm kiếm
-                        if (currentTab == 4 && isSearching)
-                        {
-                            for (auto &result : searchResults)
-                            {
-                                if (result.first.getID() == updatedPlayer.getID())
-                                {
-                                    result.first = updatedPlayer;
-                                    break;
-                                }
-                            }
-                        }
-
-                        // Đóng popup và hiện thông báo
-                        showEditPlayer = false;
-                        editInputs.clear();
-                        showMessage(u8"Đã cập nhật thông tin cầu thủ!");
-                    }
+                    salary = 0;
                 }
             }
-            catch (...)
+
+            // Cập nhật trực tiếp player hiện tại thay vì tạo mới
+            if (editingTeamIndex >= 0 && editingTeamIndex < (int)clb->getTeams().size())
             {
-                showMessage(u8"Lỗi cập nhật dữ liệu!");
+                // Lấy reference đến MyVector teams
+                MyVector<Team> &teams = clb->getTeams();
+                Team &team = teams[editingTeamIndex];
+
+                // Lấy reference đến MyVector players
+                MyVector<Player> &players = team.getPlayers();
+
+                if (editingPlayerIndex >= 0 && editingPlayerIndex < (int)players.size())
+                {
+                    // Cập nhật trực tiếp từng trường bằng setter
+                    Player &player = players[editingPlayerIndex];
+
+                    // Cập nhật các trường từ form
+                    player.setTen(editInputs[0].text);
+                    player.setViTri(editInputs[1].text);
+                    player.setNgaySinh(editInputs[2].text);
+                    player.setCCCD(editInputs[3].text);
+                    player.setQueQuan(editInputs[4].text);
+                    player.setThongTinLienLac(editInputs[5].text);
+                    player.setLuong(salary);
+
+                    // Lưu vào JSON
+                    saveToJson(*clb);
+
+                    // Cập nhật lại searchResults nếu đang ở tab tìm kiếm
+                    if (currentTab == 6 && isSearching)
+                    {
+                        for (auto &result : searchResults)
+                        {
+                            if (result.first.getID() == player.getID())
+                            {
+                                result.first = player;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Đóng popup và hiện thông báo
+                    showEditPlayer = false;
+                    editInputs.clear();
+                    showMessage(u8"Đã cập nhật thông tin cầu thủ!");
+                }
             }
         }
     }
@@ -2146,6 +2132,88 @@ public:
         }
     }
 
+    void drawEditTeamPopup()
+    {
+        if (!showEditTeam)
+            return;
+
+        DrawRectangle(0, 0, screenWidth, screenHeight, (Color){0, 0, 0, 180});
+
+        int popupWidth = 600;
+        int popupHeight = 300;
+        int popupX = (screenWidth - popupWidth) / 2;
+        int popupY = (screenHeight - popupHeight) / 2;
+
+        DrawRectangleRounded({(float)popupX, (float)popupY, (float)popupWidth, (float)popupHeight}, 0.05f, 10, CARD_BG);
+        DrawRectangleRounded({(float)popupX, (float)popupY, (float)popupWidth, 60}, 0.05f, 10, ACCENT_1);
+        DrawTextEx2(u8"ĐỔI TÊN ĐỘI", popupX + 30, popupY + 20, 22, TEXT_LIGHT);
+
+        Button closeBtn;
+        closeBtn.rect = {(float)(popupX + popupWidth - 180), (float)(popupY + 10), 80, 40};
+        closeBtn.text = u8"HỦY";
+        closeBtn.color = {149, 165, 166, 255};
+        closeBtn.hoverColor = {127, 140, 141, 255};
+        closeBtn.draw();
+
+        Button saveBtn;
+        saveBtn.rect = {(float)(popupX + popupWidth - 90), (float)(popupY + 10), 80, 40};
+        saveBtn.text = u8"LƯU";
+        saveBtn.color = {46, 204, 113, 255};
+        saveBtn.hoverColor = {39, 174, 96, 255};
+        saveBtn.draw();
+
+        if (closeBtn.isClicked() || IsKeyPressed(KEY_ESCAPE))
+        {
+            showEditTeam = false;
+            teamEditInputs.clear();
+            return;
+        }
+
+        // Khởi tạo input field nếu chưa có
+        if (teamEditInputs.empty() && editingTeamIndex2 >= 0 && editingTeamIndex2 < (int)clb->getTeams().size())
+        {
+            Team &team = clb->getTeams()[editingTeamIndex2];
+            teamEditInputs.push_back(InputField({0, 0, 0, 45}, u8"Tên Đội Mới:"));
+            teamEditInputs[0].text = team.getTenDoi();
+        }
+
+        // Cập nhật vị trí input field
+        if (!teamEditInputs.empty())
+        {
+            teamEditInputs[0].rect.x = popupX + 50;
+            teamEditInputs[0].rect.y = popupY + 120;
+            teamEditInputs[0].rect.width = popupWidth - 100;
+
+            teamEditInputs[0].draw();
+            teamEditInputs[0].update();
+        }
+
+        DrawTextEx2(u8"Nhập tên mới cho đội bóng.", popupX + 40, popupY + 250, 14, (Color){127, 140, 141, 255});
+
+        // Xử lý lưu
+        if (saveBtn.isClicked())
+        {
+            if (!teamEditInputs.empty() && !teamEditInputs[0].text.empty())
+            {
+                if (editingTeamIndex2 >= 0 && editingTeamIndex2 < (int)clb->getTeams().size())
+                {
+                    MyVector<Team> &teams = clb->getTeams();
+                    Team &team = teams[editingTeamIndex2];
+
+                    team.setTenDoi(teamEditInputs[0].text);
+                    saveToJson(*clb);
+                    showMessage(u8"Đã đổi tên đội thành công!");
+                    showEditTeam = false;
+                    teamEditInputs.clear();
+                }
+            }
+            else
+            {
+                showMessage(u8"Tên đội không được để trống!");
+            }
+        }
+    }
+
     void drawSearch()
     {
         drawHeader(u8"TÌM KIẾM CẦU THỦ");
@@ -2168,6 +2236,10 @@ public:
 
         inputs[0].draw();
         inputs[0].update();
+
+        // Thêm text hướng dẫn tìm kiếm
+        DrawTextEx2(u8"Nhập tên cầu thủ để tìm kiếm (có thể tìm theo tên đầy đủ hoặc một phần)",
+                    contentX, 205, 14, (Color){127, 140, 141, 255});
 
         Button searchBtn;
         searchBtn.rect = {(float)(contentX + contentWidth - 400), 150, 200, 45};
@@ -3629,6 +3701,7 @@ public:
             drawPlayerDetailPopup();
             drawEditPlayerPopup();
             drawEditHLVPopup();
+            drawEditTeamPopup();
             EndDrawing();
         }
 

@@ -5,22 +5,26 @@ Phần mềm quản lý câu lạc bộ bóng đá chuyên nghiệp được xâ
 ## ✨ Tính năng chính
 
 ### 📋 Quản lý cơ bản
+
 - **Đội bóng**: Thêm, sửa, xóa thông tin đội bóng và huấn luyện viên
 - **Cầu thủ**: Quản lý hồ sơ đầy đủ (CCCD, địa chỉ, lương, vị trí, vai trò)
 - **Vai trò**: Phân quyền đội trưởng/đội phó
 
 ### 🏥 Sức khỏe & Thể lực
+
 - Theo dõi tình trạng sức khỏe
 - Quản lý chấn thương và dự kiến hồi phục
 - Đánh giá thể lực (chiều cao, cân nặng, tỉ lệ mỡ)
 
 ### 🏆 Thành tích & Thống kê
+
 - **Thành tích career**: Số trận, bàn thắng cho CLB, kiến tạo
 - **Thẻ phạt**: Theo dõi thẻ vàng, thẻ đỏ
 - **Hiệu suất theo năm**: Bàn thắng, kiến tạo, chuyền dứt điểm
 - **Điểm phong độ**: Đánh giá hiệu suất cầu thủ
 
 ### 🔍 Tiện ích
+
 - Tìm kiếm cầu thủ nhanh
 - Kiểm tra trùng lặp mã đội/cầu thủ
 - Giao diện tiếng Việt đầy đủ
@@ -36,6 +40,7 @@ Phần mềm quản lý câu lạc bộ bóng đá chuyên nghiệp được xâ
 ## 📦 Cài đặt
 
 ### 1. Cài đặt raylib và w64devkit
+
 ```bash
 # Tải raylib từ: https://www.raylib.com/
 # Giải nén vào: C:/raylib/
@@ -46,12 +51,14 @@ Phần mềm quản lý câu lạc bộ bóng đá chuyên nghiệp được xâ
 ```
 
 ### 2. Clone repository
+
 ```bash
 git clone https://github.com/Toanhehe19072006/QLCLBfootball.git
 cd QLCLBfootball
 ```
 
 ### 3. Biên dịch
+
 ```bash
 # Debug build
 mingw32-make RAYLIB_PATH=C:/raylib/raylib PROJECT_NAME=ee OBJS=src/*.cpp BUILD_MODE=DEBUG
@@ -61,6 +68,7 @@ mingw32-make RAYLIB_PATH=C:/raylib/raylib PROJECT_NAME=ee OBJS=src/*.cpp
 ```
 
 ### 4. Chạy chương trình
+
 ```bash
 ./ee.exe
 ```
@@ -90,16 +98,17 @@ QLCLBfootball/
 
 ## ⌨️ Phím tắt
 
-| Phím | Chức năng |
-|------|-----------|
-| `F11` | Bật/tắt toàn màn hình |
+| Phím         | Chức năng                                |
+| ------------ | ---------------------------------------- |
+| `F11`        | Bật/tắt toàn màn hình                    |
 | `Chuột giữa` | Đổi vai trò cầu thủ (đội trưởng/đội phó) |
-| `Ctrl + S` | Lưu nhanh trong các form |
-| `ESC` | Đóng popup/hủy thao tác |
+| `Ctrl + S`   | Lưu nhanh trong các form                 |
+| `ESC`        | Đóng popup/hủy thao tác                  |
 
 ## 🎨 Giao diện
 
 Giao diện được thiết kế với 7 tab chính:
+
 1. **TỔNG QUAN**: Dashboard hiển thị thống kê tổng thể
 2. **ĐỘI BÓNG**: Danh sách đội bóng và quản lý HLV
 3. **CẦU THỦ**: Thêm, sửa, xóa cầu thủ
@@ -111,6 +120,7 @@ Giao diện được thiết kế với 7 tab chính:
 ## 💾 Định dạng dữ liệu
 
 Dữ liệu được lưu trong file `team.json` với cấu trúc:
+
 ```json
 {
   "teams": [

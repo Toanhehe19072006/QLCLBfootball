@@ -73,14 +73,17 @@ public:
 
     std::string getMaCauThu() const { return maCauThu; }
     std::string getViTri() const { return viTri; }
+    void setViTri(const std::string &vt) { viTri = vt; }
     int getBanThang() const { return banThang; }
     int getSoAo() const { return soAo; }
     void setSoAo(int sa) { soAo = sa; }
     double getLuong() const { return mucLuong; }
+    void setLuong(double l) { mucLuong = l; }
     std::string getDanhHieu() const { return danhHieu; }
     std::string getVaiTro() const { return vaiTro; }
-    std::string getCCCD() const { return cccd; }
     void setVaiTro(const std::string &vt) { vaiTro = vt; }
+    std::string getCCCD() const { return cccd; }
+    void setCCCD(const std::string &c) { cccd = c; }
 
     // Achievement/History getters/setters (Thành tích)
     std::string getNgayGiaNhap() const { return ngayGiaNhap; }
