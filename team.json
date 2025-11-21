@@ -1,41 +1,253 @@
 {
     "teams": [
         {
-            "hlvPho": "Lê Huy Khoa",
-            "hlvTruong": "Trần Công Minh",
-            "id": "VN01",
-            "name": "Đội tuyển QGVN ",
+            "hlvPho": "Choi Won-kwon",
+            "hlvTruong": "Kim Sang-sik",
+            "id": "U23VN",
+            "name": "U23 Việt Nam",
             "players": [
                 {
-                    "address": "Thái Bìn",
-                    "cccd": "3423423",
-                    "contact": "092345678",
-                    "dob": "08/09/1994 ",
-                    "goals": 8,
+                    "address": "Tuyên Quang, Việt Nam",
+                    "cccd": "001201000001",
+                    "contact": "0911222333",
+                    "dob": "07/01/2001",
+                    "goals": 0,
                     "hieuSuat": {
-                        "banThang": 10,
-                        "chuyenDung": 56,
+                        "banThang": 0,
+                        "chuyenDung": 85,
                         "diemPhongDo": 8,
-                        "kienTao": 59
+                        "kienTao": 0
                     },
-                    "honor": "Quả bóng vàng Việt Nam",
-                    "id": "VN002",
+                    "honor": "Thủ môn xuất sắc nhất U23 ĐNA",
+                    "id": "U23_P01",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Thủ lĩnh hàng thủ",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Quan Văn Chuẩn",
+                    "playerID": "U23_P01",
+                    "position": "Thủ môn",
+                    "role": "DT",
+                    "salary": 20000.0,
+                    "soAo": 1,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "23/11/2025",
+                        "ghiChu": "Chấn thương đầu gối ",
+                        "ngayBatDau": "15/11/2025 ",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2020",
+                        "soTranThiDau": 25,
+                        "theDo": 1,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 76.0,
+                        "chieuCao": 181.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001203000015",
+                    "contact": "0988777666",
+                    "dob": "15/01/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
+                        "kienTao": 3
+                    },
+                    "honor": "",
+                    "id": "U23_P02",
                     "kyLuat": {
                         "chiTietViPham": "",
                         "coViPham": false,
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
-                    "name": "Đỗ Hùng Dũng ",
-                    "playerID": "VN002",
-                    "position": "Tiền Vệ ",
-                    "role": "DT",
-                    "salary": 160000.0,
-                    "soAo": 0,
+                    "name": "Hồ Văn Cường",
+                    "playerID": "U23_P02",
+                    "position": "Hậu vệ",
+                    "role": "DP",
+                    "salary": 25000.0,
+                    "soAo": 2,
                     "sucKhoe": {
-                        "duKienHoiPhuc": "11/11/2025",
-                        "ghiChu": "Chấn thương dây chằn",
-                        "ngayBatDau": "19/02/2025",
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": "Tốc độ tốt"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/09/2023",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 65.0,
+                        "chieuCao": 168.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 8.5
+                    }
+                },
+                {
+                    "address": "Thái Nguyên, Việt Nam",
+                    "cccd": "001201000003",
+                    "contact": "0977665544",
+                    "dob": "07/11/2001",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 7,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "U23_P03",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lương Duy Cương",
+                    "playerID": "U23_P03",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 20000.0,
+                    "soAo": 3,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "27/11/2025",
+                        "ghiChu": "Căng cơ ",
+                        "ngayBatDau": "20/11/2025",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2021",
+                        "soTranThiDau": 40,
+                        "theDo": 1,
+                        "theVang": 5
+                    },
+                    "theLuc": {
+                        "canNang": 75.0,
+                        "chieuCao": 180.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001205000004",
+                    "contact": "0966555444",
+                    "dob": "14/04/2005",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 8,
+                        "kienTao": 5
+                    },
+                    "honor": "Cầu thủ trẻ triển vọng",
+                    "id": "U23_P04",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lê Nguyên Hoàng",
+                    "playerID": "U23_P04",
+                    "position": "Hậu vệ",
+                    "role": "",
+                    "salary": 15000.0,
+                    "soAo": 4,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 7,
+                        "danhHieuTaiClub": "vô địch sea game ",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 10,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 177.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Hà Tĩnh, Việt Nam",
+                    "cccd": "001202000005",
+                    "contact": "0955443322",
+                    "dob": "02/08/2002",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U23_P05",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Ngọc Thắng",
+                    "playerID": "U23_P05",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 18000.0,
+                    "soAo": 20,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "1/2/2026",
+                        "ghiChu": "",
+                        "ngayBatDau": "05/11/2025",
                         "trangThai": "Chấn thương nặng"
                     },
                     "tapLuyen": {
@@ -44,35 +256,520 @@
                         "ghiChu": ""
                     },
                     "thanhTich": {
-                        "banThangChoClub": 41,
-                        "danhHieuTaiClub": "vộ địch đna ,vô địch asian cup ",
-                        "doiBongTruoc": "đội tuyển QGVN ",
-                        "ngayGiaNhap": "11/02/2009",
-                        "soTranThiDau": 36,
+                        "banThangChoClub": 1,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2021",
+                        "soTranThiDau": 30,
                         "theDo": 1,
-                        "theVang": 7
+                        "theVang": 4
                     },
                     "theLuc": {
-                        "canNang": 48.0,
-                        "chieuCao": 156.0,
-                        "mucTheLuc": 5,
+                        "canNang": 70.0,
+                        "chieuCao": 176.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Thanh Hóa, Việt Nam",
+                    "cccd": "001203000006",
+                    "contact": "0944333222",
+                    "dob": "13/07/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 90,
+                        "diemPhongDo": 9,
+                        "kienTao": 3
+                    },
+                    "honor": "Cầu thủ trẻ xuất sắc nhất V-League",
+                    "id": "U23_P06",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Bền bỉ",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Thái Sơn",
+                    "playerID": "U23_P06",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 30000.0,
+                    "soAo": 6,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 10,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "Cúp Quốc gia",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 45,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 66.0,
+                        "chieuCao": 171.0,
+                        "mucTheLuc": 10,
                         "tiLeMo": 8.0
                     }
                 },
                 {
-                    "address": "Bình Dương, Việt Nam",
-                    "cccd": "232124134324 ",
-                    "contact": "0934567890",
-                    "dob": "20/10/1997",
-                    "goals": 34,
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001203000011",
+                    "contact": "0933445566",
+                    "dob": "11/05/2003",
+                    "goals": 5,
                     "hieuSuat": {
-                        "banThang": 19,
-                        "chuyenDung": 0,
-                        "diemPhongDo": 5,
-                        "kienTao": 0
+                        "banThang": 5,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 8,
+                        "kienTao": 6
+                    },
+                    "honor": "Cầu thủ trẻ xuất sắc",
+                    "id": "U23_P07",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Khuất Văn Khang",
+                    "playerID": "U23_P07",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 30000.0,
+                    "soAo": 10,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 8,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 35,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 170.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001203000014",
+                    "contact": "0922333444",
+                    "dob": "10/09/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 7,
+                        "kienTao": 4
+                    },
+                    "honor": "",
+                    "id": "U23_P08",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Văn Trường",
+                    "playerID": "U23_P08",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 25000.0,
+                    "soAo": 14,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 25,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 76.0,
+                        "chieuCao": 182.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Bình Dương, Việt Nam",
+                    "cccd": "001201000009",
+                    "contact": "0911223344",
+                    "dob": "04/08/2001",
+                    "goals": 3,
+                    "hieuSuat": {
+                        "banThang": 3,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 7,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U23_P09",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Võ Hoàng Minh Khoa",
+                    "playerID": "U23_P09",
+                    "position": "Tiền vệ",
+                    "role": "",
+                    "salary": 22000.0,
+                    "soAo": 8,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 6,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2021",
+                        "soTranThiDau": 35,
+                        "theDo": 0,
+                        "theVang": 4
+                    },
+                    "theLuc": {
+                        "canNang": 70.0,
+                        "chieuCao": 174.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001204000016",
+                    "contact": "0999888777",
+                    "dob": "19/08/2004",
+                    "goals": 5,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 8,
+                        "kienTao": 3
+                    },
+                    "honor": "Cầu thủ trẻ triển vọng",
+                    "id": "U23_P10",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Đình Bắc",
+                    "playerID": "U23_P10",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 25000.0,
+                    "soAo": 15,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Quảng Nam",
+                        "ngayGiaNhap": "01/06/2024",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 179.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "An Giang, Việt Nam",
+                    "cccd": "001203000011",
+                    "contact": "0909090909",
+                    "dob": "24/02/2003",
+                    "goals": 8,
+                    "hieuSuat": {
+                        "banThang": 8,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U23_P11",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Bùi Vĩ Hào",
+                    "playerID": "U23_P11",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 28000.0,
+                    "soAo": 11,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 10,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 40,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 74.0,
+                        "chieuCao": 180.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                }
+            ]
+        },
+        {
+            "hlvPho": "Lee Jung-soo",
+            "hlvTruong": "Kim Sang-sik",
+            "id": "VNNT",
+            "name": "Đội tuyển QGVN",
+            "players": [
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001092000001",
+                    "contact": "0912345678",
+                    "dob": "14/09/1992",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 88,
+                        "diemPhongDo": 9,
+                        "kienTao": 1
+                    },
+                    "honor": "Thủ môn xuất sắc nhất V-League",
+                    "id": "VNNT_P01",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Tập trung cao độ",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Filip",
+                    "playerID": "VNNT_P01",
+                    "position": "Thủ môn",
+                    "role": "CT",
+                    "salary": 50000.0,
+                    "soAo": 1,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "Vô địch V-League 2023",
+                        "doiBongTruoc": "Slovacko",
+                        "ngayGiaNhap": "01/01/2024",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 88.0,
+                        "chieuCao": 192.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hải Dương, Việt Nam",
+                    "cccd": "001098000014",
+                    "contact": "0988777666",
+                    "dob": "11/01/1998",
+                    "goals": 5,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 92,
+                        "diemPhongDo": 9,
+                        "kienTao": 8
+                    },
+                    "honor": "Quả bóng vàng Việt Nam",
+                    "id": "VNNT_P02",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Hoàng Đức",
+                    "playerID": "VNNT_P02",
+                    "position": "Tiền vệ",
+                    "role": "DP",
+                    "salary": 80000.0,
+                    "soAo": 14,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 30,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "Viettel",
+                        "ngayGiaNhap": "01/01/2017",
+                        "soTranThiDau": 40,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 75.0,
+                        "chieuCao": 183.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001097000019",
+                    "contact": "0966555444",
+                    "dob": "12/04/1997",
+                    "goals": 11,
+                    "hieuSuat": {
+                        "banThang": 11,
+                        "chuyenDung": 89,
+                        "diemPhongDo": 8,
+                        "kienTao": 6
+                    },
+                    "honor": "Quả bóng vàng Việt Nam",
+                    "id": "VNNT_P03",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Đội trưởng",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Quang Hải",
+                    "playerID": "VNNT_P03",
+                    "position": "Tiền vệ",
+                    "role": "DT",
+                    "salary": 100000.0,
+                    "soAo": 19,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 10,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "Pau FC",
+                        "ngayGiaNhap": "01/06/2023",
+                        "soTranThiDau": 60,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 65.0,
+                        "chieuCao": 166.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Bình Dương, Việt Nam",
+                    "cccd": "001097000022",
+                    "contact": "0911223344",
+                    "dob": "20/10/1997",
+                    "goals": 18,
+                    "hieuSuat": {
+                        "banThang": 18,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 9,
+                        "kienTao": 3
                     },
                     "honor": "Vua phá lưới AFF Cup",
-                    "id": "VN003",
+                    "id": "VNNT_P04",
                     "kyLuat": {
                         "chiTietViPham": "",
                         "coViPham": false,
@@ -80,11 +777,11 @@
                         "thaiDo": "Tốt"
                     },
                     "name": "Nguyễn Tiến Linh",
-                    "playerID": "VN003",
+                    "playerID": "VNNT_P04",
                     "position": "Tiền đạo",
-                    "role": "DP",
-                    "salary": 30000.0,
-                    "soAo": 0,
+                    "role": "CT",
+                    "salary": 70000.0,
+                    "soAo": 22,
                     "sucKhoe": {
                         "duKienHoiPhuc": "",
                         "ghiChu": "",
@@ -92,52 +789,52 @@
                         "trangThai": "Khỏe mạnh"
                     },
                     "tapLuyen": {
-                        "cuongDo": "Trung bình",
-                        "diemDanhGia": 5,
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
                         "ghiChu": ""
                     },
                     "thanhTich": {
-                        "banThangChoClub": 0,
+                        "banThangChoClub": 60,
                         "danhHieuTaiClub": "",
                         "doiBongTruoc": "",
-                        "ngayGiaNhap": "",
-                        "soTranThiDau": 0,
+                        "ngayGiaNhap": "01/01/2016",
+                        "soTranThiDau": 55,
                         "theDo": 0,
-                        "theVang": 0
+                        "theVang": 2
                     },
                     "theLuc": {
-                        "canNang": 0.0,
-                        "chieuCao": 0.0,
-                        "mucTheLuc": 5,
-                        "tiLeMo": 0.0
+                        "canNang": 78.0,
+                        "chieuCao": 178.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
                     }
                 },
                 {
-                    "address": "Hà Nội",
-                    "cccd": "",
-                    "contact": "0702635540",
-                    "dob": "19/07/2005",
+                    "address": "Thái Bình, Việt Nam",
+                    "cccd": "001099000068",
+                    "contact": "0933445566",
+                    "dob": "01/01/1999",
                     "goals": 2,
                     "hieuSuat": {
-                        "banThang": 4,
-                        "chuyenDung": 0,
-                        "diemPhongDo": 5,
-                        "kienTao": 0
+                        "banThang": 2,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 8,
+                        "kienTao": 1
                     },
-                    "honor": "",
-                    "id": "VN004",
+                    "honor": "Cầu thủ trẻ xuất sắc",
+                    "id": "VNNT_P05",
                     "kyLuat": {
                         "chiTietViPham": "",
                         "coViPham": false,
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
-                    "name": "Trần Đình Trọng",
-                    "playerID": "VN004",
-                    "position": "Trung vệ",
-                    "role": "",
-                    "salary": 50000.0,
-                    "soAo": 0,
+                    "name": "Bùi Hoàng Việt Anh",
+                    "playerID": "VNNT_P05",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 60000.0,
+                    "soAo": 20,
                     "sucKhoe": {
                         "duKienHoiPhuc": "",
                         "ghiChu": "",
@@ -146,112 +843,536 @@
                     },
                     "tapLuyen": {
                         "cuongDo": "Trung bình",
-                        "diemDanhGia": 5,
+                        "diemDanhGia": 8,
                         "ghiChu": ""
                     },
                     "thanhTich": {
-                        "banThangChoClub": 0,
-                        "danhHieuTaiClub": "",
-                        "doiBongTruoc": "",
-                        "ngayGiaNhap": "",
-                        "soTranThiDau": 0,
-                        "theDo": 0,
-                        "theVang": 0
+                        "banThangChoClub": 10,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "Hà Nội FC",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 30,
+                        "theDo": 1,
+                        "theVang": 4
                     },
                     "theLuc": {
-                        "canNang": 0.0,
-                        "chieuCao": 0.0,
-                        "mucTheLuc": 5,
-                        "tiLeMo": 0.0
+                        "canNang": 82.0,
+                        "chieuCao": 184.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 8.0
+                    }
+                },
+                {
+                    "address": "Thái Bình, Việt Nam",
+                    "cccd": "001099000012",
+                    "contact": "0999888777",
+                    "dob": "30/03/1997",
+                    "goals": 30,
+                    "hieuSuat": {
+                        "banThang": 30,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 10,
+                        "kienTao": 5
+                    },
+                    "honor": "Vua phá lưới V-League",
+                    "id": "VNNT_P06",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Khao khát cống hiến",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Xuân Son",
+                    "playerID": "VNNT_P06",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 120000.0,
+                    "soAo": 12,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "28/10/2025",
+                        "ghiChu": "gãy chân ",
+                        "ngayBatDau": "14/12/2024",
+                        "trangThai": "Chấn thương nặng"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 10,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 50,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "Bình Định",
+                        "ngayGiaNhap": "01/10/2024",
+                        "soTranThiDau": 5,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 90.0,
+                        "chieuCao": 185.0,
+                        "mucTheLuc": 10,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Hà Nam, Việt Nam",
+                    "cccd": "001098000010",
+                    "contact": "0977665544",
+                    "dob": "19/05/1998",
+                    "goals": 8,
+                    "hieuSuat": {
+                        "banThang": 8,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 9,
+                        "kienTao": 4
+                    },
+                    "honor": "Quả bóng bạc Việt Nam",
+                    "id": "VNNT_P07",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Phạm Tuấn Hải",
+                    "playerID": "VNNT_P07",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 65000.0,
+                    "soAo": 10,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 35,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "Hồng Lĩnh Hà Tĩnh",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 35,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 172.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 8.0
+                    }
+                },
+                {
+                    "address": "Hải Dương, Việt Nam",
+                    "cccd": "001096000017",
+                    "contact": "0955443322",
+                    "dob": "14/04/1996",
+                    "goals": 3,
+                    "hieuSuat": {
+                        "banThang": 3,
+                        "chuyenDung": 84,
+                        "diemPhongDo": 8,
+                        "kienTao": 5
+                    },
+                    "honor": "",
+                    "id": "VNNT_P08",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Vũ Văn Thanh",
+                    "playerID": "VNNT_P08",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 55000.0,
+                    "soAo": 17,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 25,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "HAGL",
+                        "ngayGiaNhap": "01/01/2016",
+                        "soTranThiDau": 50,
+                        "theDo": 0,
+                        "theVang": 5
+                    },
+                    "theLuc": {
+                        "canNang": 73.0,
+                        "chieuCao": 172.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Thái Bình, Việt Nam",
+                    "cccd": "001000000006",
+                    "contact": "0944333222",
+                    "dob": "02/11/2000",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 88,
+                        "diemPhongDo": 8,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "VNNT_P09",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Thanh Bình",
+                    "playerID": "VNNT_P09",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 40000.0,
+                    "soAo": 6,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2020",
+                        "soTranThiDau": 25,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 80.0,
+                        "chieuCao": 183.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 8.5
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001003000011",
+                    "contact": "0922333444",
+                    "dob": "11/05/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 7,
+                        "kienTao": 3
+                    },
+                    "honor": "",
+                    "id": "VNNT_P10",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Khuất Văn Khang",
+                    "playerID": "VNNT_P10",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 30000.0,
+                    "soAo": 11,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": "Nhiệt huyết"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 170.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 8.0
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001096000007",
+                    "contact": "0911999888",
+                    "dob": "09/02/1996",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 7,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "VNNT_P11",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Phạm Xuân Mạnh",
+                    "playerID": "VNNT_P11",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 45000.0,
+                    "soAo": 7,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "Hồi phục ",
+                        "ngayBatDau": "",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 15,
+                        "danhHieuTaiClub": "Vô địch Cúp Quốc gia",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 30,
+                        "theDo": 0,
+                        "theVang": 4
+                    },
+                    "theLuc": {
+                        "canNang": 74.0,
+                        "chieuCao": 175.0,
+                        "mucTheLuc": 10,
+                        "tiLeMo": 8.0
                     }
                 }
             ]
         },
         {
-            "hlvPho": "Nguyễn Quốc Tuấn",
-            "hlvTruong": "Hoàng Anh Tuấn",
-            "id": "VN23",
-            "name": "U23 Việt Nam",
+            "hlvPho": "Đinh Hồng Vinh",
+            "hlvTruong": "Kim Sang-sik",
+            "id": "U21VN",
+            "name": "U21 Việt Nam",
             "players": [
                 {
-                    "address": "Nghệ An, Việt Nam",
-                    "cccd": "",
-                    "contact": "0956789012",
-                    "dob": "01/12/2001",
-                    "goals": 8,
-                    "hieuSuat": {
-                        "banThang": 4,
-                        "chuyenDung": 0,
-                        "diemPhongDo": 5,
-                        "kienTao": 0
-                    },
-                    "honor": "Huy chương vàng SEA Games",
-                    "id": "U2301",
-                    "kyLuat": {
-                        "chiTietViPham": "",
-                        "coViPham": false,
-                        "ghiChuTinhThan": "",
-                        "thaiDo": "Tốt"
-                    },
-                    "name": "Nguyễn Văn Tùng",
-                    "playerID": "U2301",
-                    "position": "Tiền đạo",
-                    "role": "DT",
-                    "salary": 90000.0,
-                    "soAo": 0,
-                    "sucKhoe": {
-                        "duKienHoiPhuc": "",
-                        "ghiChu": "",
-                        "ngayBatDau": "",
-                        "trangThai": "Khỏe mạnh"
-                    },
-                    "tapLuyen": {
-                        "cuongDo": "Trung bình",
-                        "diemDanhGia": 5,
-                        "ghiChu": ""
-                    },
-                    "thanhTich": {
-                        "banThangChoClub": 0,
-                        "danhHieuTaiClub": "",
-                        "doiBongTruoc": "",
-                        "ngayGiaNhap": "",
-                        "soTranThiDau": 0,
-                        "theDo": 0,
-                        "theVang": 0
-                    },
-                    "theLuc": {
-                        "canNang": 0.0,
-                        "chieuCao": 0.0,
-                        "mucTheLuc": 5,
-                        "tiLeMo": 0.0
-                    }
-                },
-                {
-                    "address": "Quảng nam",
-                    "cccd": "3242334",
-                    "contact": "124332423",
-                    "dob": "29/07/2006",
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001203000099",
+                    "contact": "0912345678",
+                    "dob": "09/07/2003",
                     "goals": 0,
                     "hieuSuat": {
                         "banThang": 0,
-                        "chuyenDung": 0,
-                        "diemPhongDo": 5,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 9,
                         "kienTao": 0
                     },
+                    "honor": "Thủ môn xuất sắc U21 Quốc gia",
+                    "id": "U21_P01",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Tâm lý vững vàng",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Trần Trung Kiên",
+                    "playerID": "U21_P01",
+                    "position": "Thủ môn",
+                    "role": "CT",
+                    "salary": 20000.0,
+                    "soAo": 1,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "Vô địch U21 Quốc gia",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 82.0,
+                        "chieuCao": 191.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001203000015",
+                    "contact": "0988777666",
+                    "dob": "15/01/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
+                        "kienTao": 3
+                    },
                     "honor": "",
-                    "id": "001",
+                    "id": "U21_P02",
                     "kyLuat": {
                         "chiTietViPham": "",
                         "coViPham": false,
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
-                    "name": "nguyễn thái toàn",
-                    "playerID": "001",
-                    "position": "ST",
+                    "name": "Hồ Văn Cường",
+                    "playerID": "U21_P02",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 25000.0,
+                    "soAo": 2,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": "Tốc độ tốt"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "Vô địch V-League",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/09/2023",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 65.0,
+                        "chieuCao": 168.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 8.5
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001205000004",
+                    "contact": "0966555444",
+                    "dob": "14/04/2005",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 8,
+                        "kienTao": 0
+                    },
+                    "honor": "Cầu thủ trẻ triển vọng",
+                    "id": "U21_P03",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lê Nguyên Hoàng",
+                    "playerID": "U21_P03",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 15000.0,
+                    "soAo": 4,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": "Chơi chân tốt"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 10,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 177.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001205000005",
+                    "contact": "0955443322",
+                    "dob": "02/08/2005",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U21_P04",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Mạnh Hưng",
+                    "playerID": "U21_P04",
+                    "position": "Hậu vệ",
                     "role": "DP",
-                    "salary": 100000.0,
-                    "soAo": 0,
+                    "salary": 12000.0,
+                    "soAo": 13,
                     "sucKhoe": {
                         "duKienHoiPhuc": "",
                         "ghiChu": "",
@@ -260,59 +1381,483 @@
                     },
                     "tapLuyen": {
                         "cuongDo": "Trung bình",
-                        "diemDanhGia": 5,
+                        "diemDanhGia": 8,
                         "ghiChu": ""
                     },
                     "thanhTich": {
                         "banThangChoClub": 0,
                         "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Bình Phước",
+                        "ngayGiaNhap": "01/06/2024",
+                        "soTranThiDau": 5,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 70.0,
+                        "chieuCao": 175.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Thanh Hóa, Việt Nam",
+                    "cccd": "001203000006",
+                    "contact": "0944333222",
+                    "dob": "13/07/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 90,
+                        "diemPhongDo": 9,
+                        "kienTao": 3
+                    },
+                    "honor": "Cầu thủ trẻ xuất sắc nhất V-League",
+                    "id": "U21_P05",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Bền bỉ",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Thái Sơn",
+                    "playerID": "U21_P05",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 30000.0,
+                    "soAo": 6,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 10,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "Cúp Quốc gia",
                         "doiBongTruoc": "",
-                        "ngayGiaNhap": "",
-                        "soTranThiDau": 0,
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 45,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 66.0,
+                        "chieuCao": 171.0,
+                        "mucTheLuc": 10,
+                        "tiLeMo": 8.0
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001203000011",
+                    "contact": "0933445566",
+                    "dob": "11/05/2003",
+                    "goals": 5,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 8,
+                        "kienTao": 6
+                    },
+                    "honor": "Cầu thủ trẻ xuất sắc",
+                    "id": "U21_P06",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Đội trưởng",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Khuất Văn Khang",
+                    "playerID": "U21_P06",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 30000.0,
+                    "soAo": 10,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 8,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 35,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 170.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001203000014",
+                    "contact": "0922333444",
+                    "dob": "10/09/2003",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 7,
+                        "kienTao": 4
+                    },
+                    "honor": "",
+                    "id": "U21_P07",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Văn Trường",
+                    "playerID": "U21_P07",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 25000.0,
+                    "soAo": 14,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 25,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 76.0,
+                        "chieuCao": 182.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hải Phòng, Việt Nam",
+                    "cccd": "001203000099",
+                    "contact": "0999888777",
+                    "dob": "04/05/2003",
+                    "goals": 15,
+                    "hieuSuat": {
+                        "banThang": 15,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 8,
+                        "kienTao": 2
+                    },
+                    "honor": "Vua giải trẻ",
+                    "id": "U21_P08",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Quốc Việt",
+                    "playerID": "U21_P08",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 28000.0,
+                    "soAo": 9,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": "Sát thủ vòng cấm"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "HAGL",
+                        "ngayGiaNhap": "01/06/2024",
+                        "soTranThiDau": 20,
                         "theDo": 0,
                         "theVang": 0
                     },
                     "theLuc": {
-                        "canNang": 0.0,
-                        "chieuCao": 0.0,
-                        "mucTheLuc": 5,
-                        "tiLeMo": 0.0
+                        "canNang": 68.0,
+                        "chieuCao": 174.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001204000016",
+                    "contact": "0999111222",
+                    "dob": "19/08/2004",
+                    "goals": 5,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 8,
+                        "kienTao": 3
+                    },
+                    "honor": "",
+                    "id": "U21_P09",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Đình Bắc",
+                    "playerID": "U21_P09",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 25000.0,
+                    "soAo": 15,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": "Kỹ thuật tốt"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Quảng Nam",
+                        "ngayGiaNhap": "01/06/2024",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 179.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "An Giang, Việt Nam",
+                    "cccd": "001203000011",
+                    "contact": "0909090909",
+                    "dob": "24/02/2003",
+                    "goals": 8,
+                    "hieuSuat": {
+                        "banThang": 8,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U21_P10",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Bùi Vĩ Hào",
+                    "playerID": "U21_P10",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 28000.0,
+                    "soAo": 11,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 10,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 40,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 74.0,
+                        "chieuCao": 180.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hải Dương, Việt Nam",
+                    "cccd": "001204000088",
+                    "contact": "0911888999",
+                    "dob": "01/01/2004",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 7,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U21_P11",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Đức Việt",
+                    "playerID": "U21_P11",
+                    "position": "Tiền vệ",
+                    "role": "DT",
+                    "salary": 18000.0,
+                    "soAo": 8,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 1,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 174.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
                     }
                 }
             ]
         },
         {
-            "hlvPho": "Trần Văn Phúc",
-            "hlvTruong": "Ngô Quang Trường",
-            "id": "001",
-            "name": "U12 Việt Nam",
+            "hlvPho": "Trịnh Quang Vinh",
+            "hlvTruong": "Hứa Hiền Vinh",
+            "id": "U19VN",
+            "name": "U19 Việt Nam",
             "players": [
                 {
-                    "address": "QUẢNG NAM",
-                    "cccd": "43534543",
-                    "contact": "0702635540",
-                    "dob": "19-07-2006",
-                    "goals": 20,
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001205000001",
+                    "contact": "0911222333",
+                    "dob": "08/01/2005",
+                    "goals": 0,
                     "hieuSuat": {
-                        "banThang": 5,
-                        "chuyenDung": 0,
-                        "diemPhongDo": 5,
+                        "banThang": 0,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
                         "kienTao": 0
                     },
+                    "honor": "Thủ môn xuất sắc giải trẻ",
+                    "id": "U19_P01",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Tâm lý ổn định",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Cao Văn Bình",
+                    "playerID": "U19_P01",
+                    "position": "Thủ môn",
+                    "role": "CT",
+                    "salary": 15000.0,
+                    "soAo": 1,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "29/11/2025 ",
+                        "ghiChu": "Đau đầu gối ",
+                        "ngayBatDau": "06/10/2025 ",
+                        "trangThai": "Chấn thương nặng"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 78.0,
+                        "chieuCao": 183.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Thanh Hóa, Việt Nam",
+                    "cccd": "001205000002",
+                    "contact": "0988777666",
+                    "dob": "15/02/2005",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
                     "honor": "",
-                    "id": "U1201",
+                    "id": "U19_P02",
                     "kyLuat": {
                         "chiTietViPham": "",
                         "coViPham": false,
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
-                    "name": "Hồ Tấn Tài",
-                    "playerID": "U1201",
-                    "position": "ST",
-                    "role": "DT",
-                    "salary": 289.0,
-                    "soAo": 0,
+                    "name": "Nguyễn Mai Hoàng",
+                    "playerID": "U19_P02",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 10000.0,
+                    "soAo": 2,
                     "sucKhoe": {
                         "duKienHoiPhuc": "",
                         "ghiChu": "",
@@ -321,23 +1866,1091 @@
                     },
                     "tapLuyen": {
                         "cuongDo": "Trung bình",
-                        "diemDanhGia": 5,
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "Vô địch U19 QG",
+                        "doiBongTruoc": "Thanh Hóa",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 3
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 175.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001205000003",
+                    "contact": "0977665544",
+                    "dob": "20/05/2005",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "U19_P03",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lê Khả Đức",
+                    "playerID": "U19_P03",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 12000.0,
+                    "soAo": 3,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 1,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "PVF",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 178.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Thừa Thiên Huế, Việt Nam",
+                    "cccd": "001206000004",
+                    "contact": "0966555444",
+                    "dob": "14/11/2006",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 7,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U19_P04",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Lương Tuấn Khải",
+                    "playerID": "U19_P04",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 10000.0,
+                    "soAo": 4,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
                         "ghiChu": ""
                     },
                     "thanhTich": {
                         "banThangChoClub": 0,
                         "danhHieuTaiClub": "",
-                        "doiBongTruoc": "",
-                        "ngayGiaNhap": "",
-                        "soTranThiDau": 0,
+                        "doiBongTruoc": "Huế",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 10,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 70.0,
+                        "chieuCao": 176.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Bà Rịa, Việt Nam",
+                    "cccd": "001205000005",
+                    "contact": "0955443322",
+                    "dob": "24/01/2005",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 8,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U19_P05",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Trương Nhạc Minh",
+                    "playerID": "U19_P05",
+                    "position": "Hậu vệ",
+                    "role": "DT",
+                    "salary": 10000.0,
+                    "soAo": 5,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 1,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Bà Rịa Vũng Tàu",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 12,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 172.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001205000006",
+                    "contact": "0944333222",
+                    "dob": "23/03/2005",
+                    "goals": 3,
+                    "hieuSuat": {
+                        "banThang": 3,
+                        "chuyenDung": 88,
+                        "diemPhongDo": 9,
+                        "kienTao": 5
+                    },
+                    "honor": "Cầu thủ xuất sắc giải U19",
+                    "id": "U19_P06",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Thủ lĩnh tuyến giữa",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Thái Bá Đạt",
+                    "playerID": "U19_P06",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 18000.0,
+                    "soAo": 6,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 10,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "Vô địch U19 QG",
+                        "doiBongTruoc": "PVF",
+                        "ngayGiaNhap": "01/01/2021",
+                        "soTranThiDau": 30,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 66.0,
+                        "chieuCao": 170.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hải Dương, Việt Nam",
+                    "cccd": "001206000010",
+                    "contact": "0933445566",
+                    "dob": "03/06/2006",
+                    "goals": 5,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 9,
+                        "kienTao": 4
+                    },
+                    "honor": "Đội trưởng U19",
+                    "id": "U19_P07",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Công Phương",
+                    "playerID": "U19_P07",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 20000.0,
+                    "soAo": 10,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": "Kỹ thuật cá nhân tốt"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 8,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Thể Công Viettel",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 25,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 65.0,
+                        "chieuCao": 174.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Thừa Thiên Huế, Việt Nam",
+                    "cccd": "001206000008",
+                    "contact": "0922333444",
+                    "dob": "08/02/2006",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 7,
+                        "kienTao": 3
+                    },
+                    "honor": "",
+                    "id": "U19_P08",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Vi Đình Thượng",
+                    "playerID": "U19_P08",
+                    "position": "Tiền vệ",
+                    "role": "DT",
+                    "salary": 12000.0,
+                    "soAo": 8,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Huế",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 15,
                         "theDo": 0,
                         "theVang": 0
                     },
                     "theLuc": {
-                        "canNang": 0.0,
-                        "chieuCao": 0.0,
-                        "mucTheLuc": 5,
-                        "tiLeMo": 0.0
+                        "canNang": 64.0,
+                        "chieuCao": 168.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Hà Tĩnh, Việt Nam",
+                    "cccd": "001206000011",
+                    "contact": "0911888999",
+                    "dob": "27/05/2006",
+                    "goals": 4,
+                    "hieuSuat": {
+                        "banThang": 4,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 8,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U19_P09",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lê Đình Long Vũ",
+                    "playerID": "U19_P09",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 15000.0,
+                    "soAo": 11,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": "Tốc độ, lắt léo"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 18,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 67.0,
+                        "chieuCao": 172.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Kon Tum, Việt Nam",
+                    "cccd": "001205000009",
+                    "contact": "0909123123",
+                    "dob": "23/03/2005",
+                    "goals": 3,
+                    "hieuSuat": {
+                        "banThang": 3,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U19_P10",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Hoàng Minh Tiến",
+                    "playerID": "U19_P10",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 12000.0,
+                    "soAo": 9,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Kon Tum",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 70.0,
+                        "chieuCao": 176.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001205000020",
+                    "contact": "0999888777",
+                    "dob": "05/09/2005",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U19_P11",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Đăng Dương",
+                    "playerID": "U19_P11",
+                    "position": "Tiền đạo",
+                    "role": "DT",
+                    "salary": 12000.0,
+                    "soAo": 20,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Thể Công Viettel",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 71.0,
+                        "chieuCao": 178.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                }
+            ]
+        },
+        {
+            "hlvPho": "Trịnh Quang Vinh",
+            "hlvTruong": "Cristiano Roland",
+            "id": "U17VN",
+            "name": "U17 Việt Nam",
+            "players": [
+                {
+                    "address": "Bà Rịa, Việt Nam",
+                    "cccd": "001208000001",
+                    "contact": "0912345678",
+                    "dob": "15/03/2008",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 8,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "U17_P01",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Tập trung",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Hoa Xuân Tín",
+                    "playerID": "U17_P01",
+                    "position": "Thủ môn",
+                    "role": "CT",
+                    "salary": 5000.0,
+                    "soAo": 1,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Bà Rịa Vũng Tàu",
+                        "ngayGiaNhap": "01/01/2024",
+                        "soTranThiDau": 10,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 70.0,
+                        "chieuCao": 178.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001208000005",
+                    "contact": "0988777666",
+                    "dob": "20/06/2008",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 82,
+                        "diemPhongDo": 9,
+                        "kienTao": 1
+                    },
+                    "honor": "Đội trưởng U17",
+                    "id": "U17_P02",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "Thủ lĩnh",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lê Huy Việt Anh",
+                    "playerID": "U17_P02",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 8000.0,
+                    "soAo": 5,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 2,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "PVF",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 175.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001208000003",
+                    "contact": "0977665544",
+                    "dob": "12/02/2008",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 8,
+                        "kienTao": 0
+                    },
+                    "honor": "",
+                    "id": "U17_P03",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Bạch Trọng Dương",
+                    "playerID": "U17_P03",
+                    "position": "Hậu vệ",
+                    "role": "CT",
+                    "salary": 6000.0,
+                    "soAo": 3,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 1,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 12,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 66.0,
+                        "chieuCao": 172.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Nghệ An, Việt Nam",
+                    "cccd": "001208000004",
+                    "contact": "0966555444",
+                    "dob": "05/08/2008",
+                    "goals": 0,
+                    "hieuSuat": {
+                        "banThang": 0,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U17_P04",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Lê Tấn Dũng",
+                    "playerID": "U17_P04",
+                    "position": "Hậu vệ",
+                    "role": "DT",
+                    "salary": 5000.0,
+                    "soAo": 4,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "2/12/2025 ",
+                        "ghiChu": "bông gân ",
+                        "ngayBatDau": "20/11/2025 ",
+                        "trangThai": "Chấn thương nhẹ"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 0,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "SLNA",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 10,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 65.0,
+                        "chieuCao": 170.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001208000006",
+                    "contact": "0955443322",
+                    "dob": "10/10/2008",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 8,
+                        "kienTao": 3
+                    },
+                    "honor": "",
+                    "id": "U17_P05",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Đậu Hồng Phong",
+                    "playerID": "U17_P05",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 7000.0,
+                    "soAo": 6,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 5,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Hà Nội",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 18,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 66.0,
+                        "chieuCao": 171.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 9.0
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001208000008",
+                    "contact": "0944333222",
+                    "dob": "14/04/2008",
+                    "goals": 1,
+                    "hieuSuat": {
+                        "banThang": 1,
+                        "chuyenDung": 80,
+                        "diemPhongDo": 8,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U17_P06",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Việt Long",
+                    "playerID": "U17_P06",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 7000.0,
+                    "soAo": 8,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Hà Nội",
+                        "ngayGiaNhap": "01/01/2022",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 2
+                    },
+                    "theLuc": {
+                        "canNang": 64.0,
+                        "chieuCao": 169.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001208000014",
+                    "contact": "0933445566",
+                    "dob": "02/09/2008",
+                    "goals": 3,
+                    "hieuSuat": {
+                        "banThang": 3,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 8,
+                        "kienTao": 4
+                    },
+                    "honor": "",
+                    "id": "U17_P07",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Hoàng Trọng Duy Khang",
+                    "playerID": "U17_P07",
+                    "position": "Tiền vệ",
+                    "role": "CT",
+                    "salary": 6500.0,
+                    "soAo": 14,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 4,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "PVF",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 16,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 67.0,
+                        "chieuCao": 173.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Gia Lai, Việt Nam",
+                    "cccd": "001208000010",
+                    "contact": "0922333444",
+                    "dob": "03/01/2008",
+                    "goals": 10,
+                    "hieuSuat": {
+                        "banThang": 10,
+                        "chuyenDung": 85,
+                        "diemPhongDo": 10,
+                        "kienTao": 5
+                    },
+                    "honor": "Thần đồng V-League",
+                    "id": "U17_P08",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Trần Gia Bảo",
+                    "playerID": "U17_P08",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 15000.0,
+                    "soAo": 10,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 10,
+                        "ghiChu": "Kỷ lục cầu thủ trẻ nhất ghi bàn"
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 1,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "HAGL",
+                        "ngayGiaNhap": "01/01/2024",
+                        "soTranThiDau": 5,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 72.0,
+                        "chieuCao": 178.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 8.5
+                    }
+                },
+                {
+                    "address": "Hà Nội, Việt Nam",
+                    "cccd": "001208000009",
+                    "contact": "0911888999",
+                    "dob": "11/05/2008",
+                    "goals": 5,
+                    "hieuSuat": {
+                        "banThang": 5,
+                        "chuyenDung": 78,
+                        "diemPhongDo": 8,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U17_P09",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Thiên Phú",
+                    "playerID": "U17_P09",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 7000.0,
+                    "soAo": 9,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 9,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 8,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "Hà Nội",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 20,
+                        "theDo": 0,
+                        "theVang": 1
+                    },
+                    "theLuc": {
+                        "canNang": 69.0,
+                        "chieuCao": 176.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001208000011",
+                    "contact": "0909123123",
+                    "dob": "22/08/2008",
+                    "goals": 3,
+                    "hieuSuat": {
+                        "banThang": 3,
+                        "chuyenDung": 75,
+                        "diemPhongDo": 7,
+                        "kienTao": 2
+                    },
+                    "honor": "",
+                    "id": "U17_P10",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Nguyễn Văn Bách",
+                    "playerID": "U17_P10",
+                    "position": "Tiền đạo",
+                    "role": "CT",
+                    "salary": 6500.0,
+                    "soAo": 11,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Cao",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 4,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "PVF",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 15,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 65.0,
+                        "chieuCao": 172.0,
+                        "mucTheLuc": 9,
+                        "tiLeMo": 10.0
+                    }
+                },
+                {
+                    "address": "Hưng Yên, Việt Nam",
+                    "cccd": "001208000020",
+                    "contact": "0999888777",
+                    "dob": "15/12/2008",
+                    "goals": 2,
+                    "hieuSuat": {
+                        "banThang": 2,
+                        "chuyenDung": 72,
+                        "diemPhongDo": 7,
+                        "kienTao": 1
+                    },
+                    "honor": "",
+                    "id": "U17_P11",
+                    "kyLuat": {
+                        "chiTietViPham": "",
+                        "coViPham": false,
+                        "ghiChuTinhThan": "",
+                        "thaiDo": "Tốt"
+                    },
+                    "name": "Bùi Duy Đăng",
+                    "playerID": "U17_P11",
+                    "position": "Tiền đạo",
+                    "role": "DT",
+                    "salary": 6000.0,
+                    "soAo": 20,
+                    "sucKhoe": {
+                        "duKienHoiPhuc": "",
+                        "ghiChu": "",
+                        "ngayBatDau": "",
+                        "trangThai": "Khỏe mạnh"
+                    },
+                    "tapLuyen": {
+                        "cuongDo": "Trung bình",
+                        "diemDanhGia": 8,
+                        "ghiChu": ""
+                    },
+                    "thanhTich": {
+                        "banThangChoClub": 3,
+                        "danhHieuTaiClub": "",
+                        "doiBongTruoc": "PVF",
+                        "ngayGiaNhap": "01/01/2023",
+                        "soTranThiDau": 12,
+                        "theDo": 0,
+                        "theVang": 0
+                    },
+                    "theLuc": {
+                        "canNang": 68.0,
+                        "chieuCao": 174.0,
+                        "mucTheLuc": 8,
+                        "tiLeMo": 9.5
                     }
                 }
             ]

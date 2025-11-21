@@ -1075,16 +1075,25 @@ public:
             EndScissorMode();
             drawScrollbar(contentHeight, viewHeight, startY);
 
-            DrawTextEx2(u8"Chú thích:", contentX, screenHeight - 80, 14, TEXT_DARK);
-            DrawRectangleRounded({(float)(contentX + 80), (float)(screenHeight - 78), 30, 18}, 0.3f, 6, CAPTAIN_COLOR);
-            DrawTextEx2("DT", contentX + 87, screenHeight - 75, 12, TEXT_LIGHT);
-            DrawTextEx2(u8"= Đội trưởng", contentX + 115, screenHeight - 77, 14, TEXT_DARK);
+            // Vẽ chú thích đẹp hơn với background
+            int legendY = screenHeight - 65;
+            int legendHeight = 50;
+            DrawRectangleRounded({(float)contentX, (float)legendY, (float)contentWidth, (float)legendHeight}, 0.1f, 10, (Color){240, 248, 255, 255});
 
-            DrawRectangleRounded({(float)(contentX + 230), (float)(screenHeight - 78), 30, 18}, 0.3f, 6, VICE_CAPTAIN_COLOR);
-            DrawTextEx2("DP", contentX + 237, screenHeight - 75, 12, TEXT_LIGHT);
-            DrawTextEx2(u8"= Đội phó", contentX + 265, screenHeight - 77, 14, TEXT_DARK);
+            DrawTextEx2(u8"CHÚ THÍCH", contentX + 20, legendY + 10, 16, TEXT_DARK);
 
-            DrawTextEx2("| Click chuot giua (scroll) de thay doi vai tro", contentX + 380, screenHeight - 77, 14, (Color){127, 140, 141, 255});
+            // Đội trưởng
+            DrawRectangleRounded({(float)(contentX + 120), (float)(legendY + 10), 35, 22}, 0.3f, 8, CAPTAIN_COLOR);
+            DrawTextEx2("DT", contentX + 128, legendY + 13, 14, TEXT_LIGHT);
+            DrawTextEx2(u8"= Đội trưởng", contentX + 160, legendY + 12, 16, TEXT_DARK);
+
+            // Đội phó
+            DrawRectangleRounded({(float)(contentX + 280), (float)(legendY + 10), 35, 22}, 0.3f, 8, VICE_CAPTAIN_COLOR);
+            DrawTextEx2("DP", contentX + 288, legendY + 13, 14, TEXT_LIGHT);
+            DrawTextEx2(u8"= Đội phó", contentX + 320, legendY + 12, 16, TEXT_DARK);
+
+            // Hướng dẫn
+            DrawTextEx2("| Click chuột giữa (scroll) để thay đổi vai trò", contentX + 440, legendY + 12, 15, ACCENT_1);
 
             return;
         }
@@ -2547,7 +2556,7 @@ public:
 
                     DrawTextEx2(player.getTen(), listX + 20, itemY + 10, 14, textColor);
                     Color secondaryColor = isSelected ? Color{240, 240, 240, 255} : ACCENT_2;
-                    string positionText = player.getSoAo() > 0 ? (u8"#" + to_string(player.getSoAo()) + u8" • " + player.getViTri()) : player.getViTri();
+                    string positionText = player.getSoAo() > 0 ? (to_string(player.getSoAo()) + u8" • " + player.getViTri()) : player.getViTri();
                     DrawTextEx2(positionText, listX + 20, itemY + 32, 12, secondaryColor);
 
                     if (isHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
