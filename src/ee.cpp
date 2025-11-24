@@ -12,14 +12,11 @@
 #include "models/Player.h"
 #include "models/Team.h"
 #include "models/Club.h"
-#include "utf8_helper.h" // Must be included AFTER raylib
+#include "utf8_helper.h"
 
 using json = nlohmann::json;
 using namespace std;
 
-// Format a numeric salary value into VND string with thousand separators.
-// Assumption: existing salary values are stored in 'k' (thousands). If so,
-// pass valueIsInK=true (default) to multiply by 1000. Returns e.g. "50,500 VND".
 static string formatVND(double value, bool valueIsInK = true)
 {
     long long v = llround(value * (valueIsInK ? 1000.0 : 1.0));
@@ -2556,7 +2553,7 @@ public:
 
                     DrawTextEx2(player.getTen(), listX + 20, itemY + 10, 14, textColor);
                     Color secondaryColor = isSelected ? Color{240, 240, 240, 255} : ACCENT_2;
-                    string positionText = player.getSoAo() > 0 ? (to_string(player.getSoAo()) + u8" • " + player.getViTri()) : player.getViTri();
+                    string positionText = player.getSoAo() > 0 ? (to_string(player.getSoAo()) + u8" | " + player.getViTri()) : player.getViTri();
                     DrawTextEx2(positionText, listX + 20, itemY + 32, 12, secondaryColor);
 
                     if (isHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
@@ -2588,7 +2585,7 @@ public:
                         Color lightWhite = {240, 240, 240, 255};
                         DrawRectangle(detailX, detailY, detailWidth, 100, ACCENT_1);
                         DrawTextEx2(player.getTen(), detailX + 20, detailY + 15, 22, WHITE);
-                        string jerseyInfo = player.getSoAo() > 0 ? (u8"Số áo: " + to_string(player.getSoAo()) + u8" • ") : u8"";
+                        string jerseyInfo = player.getSoAo() > 0 ? (u8"Số áo: " + to_string(player.getSoAo()) + u8" | ") : u8"";
                         DrawTextEx2(jerseyInfo + u8"Vị trí: " + player.getViTri(), detailX + 20, detailY + 50, 14, lightWhite);
                         DrawTextEx2(u8"Đội: " + team.getTenDoi(), detailX + 20, detailY + 75, 14, lightWhite);
 
