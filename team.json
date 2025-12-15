@@ -1,6 +1,7 @@
 {
     "teams": [
         {
+            "danhHieuTapThe": [],
             "hlvPho": "Lee Jung-soo",
             "hlvTruong": "Kim Sang-sik",
             "id": "VN",
@@ -10,6 +11,14 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001092000001",
                     "contact": "0912345678",
+                    "danhSachGiaiThuong": [
+                        {
+                            "ghiChu": "",
+                            "nam": 2023,
+                            "tenGiai": "Qủa bóng Vàng",
+                            "xepHang": 1
+                        }
+                    ],
                     "dob": "14/09/1992",
                     "goals": 0,
                     "hieuSuat": {
@@ -26,11 +35,23 @@
                         "ghiChuTinhThan": "Tập trung cao độ",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [
+                        {
+                            "banThang": 2,
+                            "doiDoi": "philippin ",
+                            "ghiChu": "",
+                            "giaiDau": "vll ",
+                            "kienTao": 1,
+                            "ngayThiDau": "19/07/2023 ",
+                            "theDo": 0,
+                            "theVang": 1
+                        }
+                    ],
                     "name": "Nguyễn Filip",
                     "playerID": "VN01",
                     "position": "Thủ môn",
-                    "role": "DT",
-                    "salary": 50000.0,
+                    "role": "DP",
+                    "salary": 60000.0,
                     "soAo": 1,
                     "sucKhoe": {
                         "duKienHoiPhuc": "",
@@ -52,6 +73,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 88.0,
                         "chieuCao": 192.0,
@@ -63,6 +85,14 @@
                     "address": "Hải Dương, Việt Nam",
                     "cccd": "001098000014",
                     "contact": "0988777666",
+                    "danhSachGiaiThuong": [
+                        {
+                            "ghiChu": "",
+                            "nam": 2023,
+                            "tenGiai": "Quả Bóng Vàng",
+                            "xepHang": 1
+                        }
+                    ],
                     "dob": "11/01/1998",
                     "goals": 5,
                     "hieuSuat": {
@@ -79,10 +109,22 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [
+                        {
+                            "banThang": 2,
+                            "doiDoi": "11 ",
+                            "ghiChu": "",
+                            "giaiDau": "sd ",
+                            "kienTao": 0,
+                            "ngayThiDau": "12/12/2023 ",
+                            "theDo": 0,
+                            "theVang": 1
+                        }
+                    ],
                     "name": "Nguyễn Hoàng Đức",
                     "playerID": "VN02",
                     "position": "Tiền vệ",
-                    "role": "DP",
+                    "role": "DT",
                     "salary": 80000.0,
                     "soAo": 14,
                     "sucKhoe": {
@@ -105,6 +147,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 75.0,
                         "chieuCao": 183.0,
@@ -116,6 +159,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001097000019",
                     "contact": "0966555444",
+                    "danhSachGiaiThuong": [],
                     "dob": "12/04/1997",
                     "goals": 11,
                     "hieuSuat": {
@@ -132,6 +176,18 @@
                         "ghiChuTinhThan": "Đội trưởng",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [
+                        {
+                            "banThang": 3,
+                            "doiDoi": "pp ",
+                            "ghiChu": "",
+                            "giaiDau": "13 ",
+                            "kienTao": 0,
+                            "ngayThiDau": "12/12/2023 ",
+                            "theDo": 0,
+                            "theVang": 0
+                        }
+                    ],
                     "name": "Nguyễn Quang Hải",
                     "playerID": "VN03",
                     "position": "Tiền vệ",
@@ -158,6 +214,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 65.0,
                         "chieuCao": 166.0,
@@ -169,6 +226,7 @@
                     "address": "Bình Dương, Việt Nam",
                     "cccd": "001097000022",
                     "contact": "0911223344",
+                    "danhSachGiaiThuong": [],
                     "dob": "20/10/1997",
                     "goals": 18,
                     "hieuSuat": {
@@ -185,10 +243,11 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Tiến Linh",
                     "playerID": "VN04",
                     "position": "Tiền đạo",
-                    "role": "CT",
+                    "role": "",
                     "salary": 70000.0,
                     "soAo": 22,
                     "sucKhoe": {
@@ -211,6 +270,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 78.0,
                         "chieuCao": 178.0,
@@ -222,6 +282,7 @@
                     "address": "Thái Bình, Việt Nam",
                     "cccd": "001099000068",
                     "contact": "0933445566",
+                    "danhSachGiaiThuong": [],
                     "dob": "01/01/1999",
                     "goals": 2,
                     "hieuSuat": {
@@ -238,10 +299,11 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Bùi Hoàng Việt Anh",
                     "playerID": "VN05",
                     "position": "Hậu vệ",
-                    "role": "CT",
+                    "role": "",
                     "salary": 60000.0,
                     "soAo": 20,
                     "sucKhoe": {
@@ -264,6 +326,7 @@
                         "theDo": 1,
                         "theVang": 4
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 82.0,
                         "chieuCao": 184.0,
@@ -275,6 +338,7 @@
                     "address": "Thái Bình, Việt Nam",
                     "cccd": "001099000012",
                     "contact": "0999888777",
+                    "danhSachGiaiThuong": [],
                     "dob": "30/03/1997",
                     "goals": 30,
                     "hieuSuat": {
@@ -291,6 +355,7 @@
                         "ghiChuTinhThan": "Khao khát cống hiến",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Xuân Son",
                     "playerID": "VN06",
                     "position": "Tiền đạo",
@@ -317,6 +382,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 90.0,
                         "chieuCao": 185.0,
@@ -328,6 +394,7 @@
                     "address": "Hà Nam, Việt Nam",
                     "cccd": "001098000010",
                     "contact": "0977665544",
+                    "danhSachGiaiThuong": [],
                     "dob": "19/05/1998",
                     "goals": 8,
                     "hieuSuat": {
@@ -344,6 +411,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Phạm Tuấn Hải",
                     "playerID": "VN07",
                     "position": "Tiền đạo",
@@ -370,6 +438,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 172.0,
@@ -381,6 +450,7 @@
                     "address": "Hải Dương, Việt Nam",
                     "cccd": "001096000017",
                     "contact": "0955443322",
+                    "danhSachGiaiThuong": [],
                     "dob": "14/04/1996",
                     "goals": 3,
                     "hieuSuat": {
@@ -397,6 +467,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Vũ Văn Thanh",
                     "playerID": "VN08",
                     "position": "Hậu vệ",
@@ -423,6 +494,7 @@
                         "theDo": 0,
                         "theVang": 5
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 73.0,
                         "chieuCao": 172.0,
@@ -434,6 +506,7 @@
                     "address": "Thái Bình, Việt Nam",
                     "cccd": "001000000006",
                     "contact": "0944333222",
+                    "danhSachGiaiThuong": [],
                     "dob": "02/11/2000",
                     "goals": 1,
                     "hieuSuat": {
@@ -450,10 +523,11 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Thanh Bình",
                     "playerID": "VN09",
                     "position": "Hậu vệ",
-                    "role": "CT",
+                    "role": "",
                     "salary": 40000.0,
                     "soAo": 6,
                     "sucKhoe": {
@@ -476,6 +550,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 80.0,
                         "chieuCao": 183.0,
@@ -487,6 +562,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001003000011",
                     "contact": "0922333444",
+                    "danhSachGiaiThuong": [],
                     "dob": "11/05/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -503,10 +579,11 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Khuất Văn Khang",
                     "playerID": "VN10",
                     "position": "Tiền vệ",
-                    "role": "CT",
+                    "role": "",
                     "salary": 30000.0,
                     "soAo": 11,
                     "sucKhoe": {
@@ -529,6 +606,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 170.0,
@@ -540,6 +618,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001096000007",
                     "contact": "0911999888",
+                    "danhSachGiaiThuong": [],
                     "dob": "09/02/1996",
                     "goals": 1,
                     "hieuSuat": {
@@ -556,6 +635,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Phạm Xuân Mạnh",
                     "playerID": "VN11",
                     "position": "Hậu vệ",
@@ -582,6 +662,7 @@
                         "theDo": 0,
                         "theVang": 4
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 74.0,
                         "chieuCao": 175.0,
@@ -592,6 +673,7 @@
             ]
         },
         {
+            "danhHieuTapThe": [],
             "hlvPho": "Choi Won-kwon",
             "hlvTruong": "Kim Sang-sik",
             "id": "U23VN",
@@ -601,6 +683,7 @@
                     "address": "Tuyên Quang, Việt Nam",
                     "cccd": "001201000001",
                     "contact": "0911222333",
+                    "danhSachGiaiThuong": [],
                     "dob": "07/01/2001",
                     "goals": 0,
                     "hieuSuat": {
@@ -617,6 +700,7 @@
                         "ghiChuTinhThan": "Thủ lĩnh hàng thủ",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Quan Văn Chuẩn",
                     "playerID": "U2301",
                     "position": "Thủ môn",
@@ -643,6 +727,7 @@
                         "theDo": 1,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 76.0,
                         "chieuCao": 181.0,
@@ -654,6 +739,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001203000015",
                     "contact": "0988777666",
+                    "danhSachGiaiThuong": [],
                     "dob": "15/01/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -670,6 +756,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Hồ Văn Cường",
                     "playerID": "U2302",
                     "position": "Hậu vệ",
@@ -696,6 +783,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 65.0,
                         "chieuCao": 168.0,
@@ -707,6 +795,7 @@
                     "address": "Thái Nguyên, Việt Nam",
                     "cccd": "001201000003",
                     "contact": "0977665544",
+                    "danhSachGiaiThuong": [],
                     "dob": "07/11/2001",
                     "goals": 1,
                     "hieuSuat": {
@@ -723,6 +812,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lương Duy Cương",
                     "playerID": "U2303",
                     "position": "Hậu vệ",
@@ -749,6 +839,7 @@
                         "theDo": 1,
                         "theVang": 5
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 75.0,
                         "chieuCao": 180.0,
@@ -760,6 +851,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001205000004",
                     "contact": "0966555444",
+                    "danhSachGiaiThuong": [],
                     "dob": "14/04/2005",
                     "goals": 0,
                     "hieuSuat": {
@@ -776,6 +868,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lê Nguyên Hoàng",
                     "playerID": "U2304",
                     "position": "Hậu vệ",
@@ -802,6 +895,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 177.0,
@@ -813,6 +907,7 @@
                     "address": "Hà Tĩnh, Việt Nam",
                     "cccd": "001202000005",
                     "contact": "0955443322",
+                    "danhSachGiaiThuong": [],
                     "dob": "02/08/2002",
                     "goals": 1,
                     "hieuSuat": {
@@ -829,6 +924,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Ngọc Thắng",
                     "playerID": "U2305",
                     "position": "Hậu vệ",
@@ -855,6 +951,7 @@
                         "theDo": 1,
                         "theVang": 4
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 70.0,
                         "chieuCao": 176.0,
@@ -866,6 +963,7 @@
                     "address": "Thanh Hóa, Việt Nam",
                     "cccd": "001203000006",
                     "contact": "0944333222",
+                    "danhSachGiaiThuong": [],
                     "dob": "13/07/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -882,6 +980,7 @@
                         "ghiChuTinhThan": "Bền bỉ",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Thái Sơn",
                     "playerID": "U2306",
                     "position": "Tiền vệ",
@@ -908,6 +1007,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 66.0,
                         "chieuCao": 171.0,
@@ -919,6 +1019,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001203000011",
                     "contact": "0933445566",
+                    "danhSachGiaiThuong": [],
                     "dob": "11/05/2003",
                     "goals": 5,
                     "hieuSuat": {
@@ -935,6 +1036,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Khuất Văn Khang",
                     "playerID": "U2307",
                     "position": "Tiền vệ",
@@ -961,6 +1063,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 170.0,
@@ -972,6 +1075,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001203000014",
                     "contact": "0922333444",
+                    "danhSachGiaiThuong": [],
                     "dob": "10/09/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -988,6 +1092,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Văn Trường",
                     "playerID": "U2308",
                     "position": "Tiền vệ",
@@ -1014,6 +1119,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 76.0,
                         "chieuCao": 182.0,
@@ -1025,6 +1131,7 @@
                     "address": "Bình Dương, Việt Nam",
                     "cccd": "001201000009",
                     "contact": "0911223344",
+                    "danhSachGiaiThuong": [],
                     "dob": "04/08/2001",
                     "goals": 3,
                     "hieuSuat": {
@@ -1041,6 +1148,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Võ Hoàng Minh Khoa",
                     "playerID": "U2309",
                     "position": "Tiền vệ",
@@ -1067,6 +1175,7 @@
                         "theDo": 0,
                         "theVang": 4
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 70.0,
                         "chieuCao": 174.0,
@@ -1078,6 +1187,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001204000016",
                     "contact": "0999888777",
+                    "danhSachGiaiThuong": [],
                     "dob": "19/08/2004",
                     "goals": 5,
                     "hieuSuat": {
@@ -1094,6 +1204,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Đình Bắc",
                     "playerID": "U2310",
                     "position": "Tiền đạo",
@@ -1120,6 +1231,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 179.0,
@@ -1131,6 +1243,7 @@
                     "address": "An Giang, Việt Nam",
                     "cccd": "001203000011",
                     "contact": "0909090909",
+                    "danhSachGiaiThuong": [],
                     "dob": "24/02/2003",
                     "goals": 8,
                     "hieuSuat": {
@@ -1147,6 +1260,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Bùi Vĩ Hào",
                     "playerID": "U2311",
                     "position": "Tiền đạo",
@@ -1173,6 +1287,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 74.0,
                         "chieuCao": 180.0,
@@ -1183,6 +1298,7 @@
             ]
         },
         {
+            "danhHieuTapThe": [],
             "hlvPho": "Đinh Hồng Vinh",
             "hlvTruong": "Kim Sang-sik",
             "id": "U21VN",
@@ -1192,6 +1308,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001203000099",
                     "contact": "0912345678",
+                    "danhSachGiaiThuong": [],
                     "dob": "09/07/2003",
                     "goals": 0,
                     "hieuSuat": {
@@ -1208,6 +1325,7 @@
                         "ghiChuTinhThan": "Tâm lý vững vàng",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Trần Trung Kiên",
                     "playerID": "U2101",
                     "position": "Thủ môn",
@@ -1234,6 +1352,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 82.0,
                         "chieuCao": 191.0,
@@ -1245,6 +1364,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001203000015",
                     "contact": "0988777666",
+                    "danhSachGiaiThuong": [],
                     "dob": "15/01/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -1261,6 +1381,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Hồ Văn Cường",
                     "playerID": "U2102",
                     "position": "Hậu vệ",
@@ -1287,6 +1408,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 65.0,
                         "chieuCao": 168.0,
@@ -1298,6 +1420,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001205000004",
                     "contact": "0966555444",
+                    "danhSachGiaiThuong": [],
                     "dob": "14/04/2005",
                     "goals": 0,
                     "hieuSuat": {
@@ -1314,6 +1437,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lê Nguyên Hoàng",
                     "playerID": "U2103",
                     "position": "Hậu vệ",
@@ -1340,6 +1464,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 177.0,
@@ -1351,6 +1476,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001205000005",
                     "contact": "0955443322",
+                    "danhSachGiaiThuong": [],
                     "dob": "02/08/2005",
                     "goals": 1,
                     "hieuSuat": {
@@ -1367,6 +1493,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Mạnh Hưng",
                     "playerID": "U2104",
                     "position": "Hậu vệ",
@@ -1393,6 +1520,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 70.0,
                         "chieuCao": 175.0,
@@ -1404,6 +1532,7 @@
                     "address": "Thanh Hóa, Việt Nam",
                     "cccd": "001203000006",
                     "contact": "0944333222",
+                    "danhSachGiaiThuong": [],
                     "dob": "13/07/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -1420,6 +1549,7 @@
                         "ghiChuTinhThan": "Bền bỉ",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Thái Sơn",
                     "playerID": "U2105",
                     "position": "Tiền vệ",
@@ -1446,6 +1576,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 66.0,
                         "chieuCao": 171.0,
@@ -1457,6 +1588,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001203000011",
                     "contact": "0933445566",
+                    "danhSachGiaiThuong": [],
                     "dob": "11/05/2003",
                     "goals": 5,
                     "hieuSuat": {
@@ -1473,6 +1605,7 @@
                         "ghiChuTinhThan": "Đội trưởng",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Khuất Văn Khang",
                     "playerID": "U2106",
                     "position": "Tiền vệ",
@@ -1499,6 +1632,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 170.0,
@@ -1510,6 +1644,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001203000014",
                     "contact": "0922333444",
+                    "danhSachGiaiThuong": [],
                     "dob": "10/09/2003",
                     "goals": 2,
                     "hieuSuat": {
@@ -1526,6 +1661,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Văn Trường",
                     "playerID": "U2107",
                     "position": "Tiền vệ",
@@ -1552,6 +1688,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 76.0,
                         "chieuCao": 182.0,
@@ -1563,6 +1700,7 @@
                     "address": "Hải Phòng, Việt Nam",
                     "cccd": "001203000099",
                     "contact": "0999888777",
+                    "danhSachGiaiThuong": [],
                     "dob": "04/05/2003",
                     "goals": 15,
                     "hieuSuat": {
@@ -1579,6 +1717,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Quốc Việt",
                     "playerID": "U2108",
                     "position": "Tiền đạo",
@@ -1605,6 +1744,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 174.0,
@@ -1616,6 +1756,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001204000016",
                     "contact": "0999111222",
+                    "danhSachGiaiThuong": [],
                     "dob": "19/08/2004",
                     "goals": 5,
                     "hieuSuat": {
@@ -1632,6 +1773,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Đình Bắc",
                     "playerID": "U2109",
                     "position": "Tiền đạo",
@@ -1658,6 +1800,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 179.0,
@@ -1669,6 +1812,7 @@
                     "address": "An Giang, Việt Nam",
                     "cccd": "001203000011",
                     "contact": "0909090909",
+                    "danhSachGiaiThuong": [],
                     "dob": "24/02/2003",
                     "goals": 8,
                     "hieuSuat": {
@@ -1685,6 +1829,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Bùi Vĩ Hào",
                     "playerID": "U2110",
                     "position": "Tiền đạo",
@@ -1711,6 +1856,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 74.0,
                         "chieuCao": 180.0,
@@ -1722,6 +1868,7 @@
                     "address": "Hải Dương, Việt Nam",
                     "cccd": "001204000088",
                     "contact": "0911888999",
+                    "danhSachGiaiThuong": [],
                     "dob": "01/01/2004",
                     "goals": 1,
                     "hieuSuat": {
@@ -1738,6 +1885,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Đức Việt",
                     "playerID": "U2111",
                     "position": "Tiền vệ",
@@ -1764,6 +1912,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 174.0,
@@ -1774,6 +1923,7 @@
             ]
         },
         {
+            "danhHieuTapThe": [],
             "hlvPho": "Trịnh Quang Vinh",
             "hlvTruong": "Hứa Hiền Vinh",
             "id": "U19VN",
@@ -1783,6 +1933,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001205000001",
                     "contact": "0911222333",
+                    "danhSachGiaiThuong": [],
                     "dob": "08/01/2005",
                     "goals": 0,
                     "hieuSuat": {
@@ -1799,6 +1950,7 @@
                         "ghiChuTinhThan": "Tâm lý ổn định",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Cao Văn Bình",
                     "playerID": "U1901",
                     "position": "Thủ môn",
@@ -1825,6 +1977,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 78.0,
                         "chieuCao": 183.0,
@@ -1836,6 +1989,7 @@
                     "address": "Thanh Hóa, Việt Nam",
                     "cccd": "001205000002",
                     "contact": "0988777666",
+                    "danhSachGiaiThuong": [],
                     "dob": "15/02/2005",
                     "goals": 1,
                     "hieuSuat": {
@@ -1852,6 +2006,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Mai Hoàng",
                     "playerID": "U1902",
                     "position": "Hậu vệ",
@@ -1878,6 +2033,7 @@
                         "theDo": 0,
                         "theVang": 3
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 175.0,
@@ -1889,6 +2045,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001205000003",
                     "contact": "0977665544",
+                    "danhSachGiaiThuong": [],
                     "dob": "20/05/2005",
                     "goals": 0,
                     "hieuSuat": {
@@ -1905,6 +2062,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lê Khả Đức",
                     "playerID": "U1903",
                     "position": "Hậu vệ",
@@ -1931,6 +2089,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 178.0,
@@ -1942,6 +2101,7 @@
                     "address": "Thừa Thiên Huế, Việt Nam",
                     "cccd": "001206000004",
                     "contact": "0966555444",
+                    "danhSachGiaiThuong": [],
                     "dob": "14/11/2006",
                     "goals": 1,
                     "hieuSuat": {
@@ -1958,6 +2118,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Lương Tuấn Khải",
                     "playerID": "U1904",
                     "position": "Hậu vệ",
@@ -1984,6 +2145,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 70.0,
                         "chieuCao": 176.0,
@@ -1995,6 +2157,7 @@
                     "address": "Bà Rịa, Việt Nam",
                     "cccd": "001205000005",
                     "contact": "0955443322",
+                    "danhSachGiaiThuong": [],
                     "dob": "24/01/2005",
                     "goals": 0,
                     "hieuSuat": {
@@ -2011,6 +2174,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Trương Nhạc Minh",
                     "playerID": "U1905",
                     "position": "Hậu vệ",
@@ -2037,6 +2201,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 172.0,
@@ -2048,6 +2213,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001205000006",
                     "contact": "0944333222",
+                    "danhSachGiaiThuong": [],
                     "dob": "23/03/2005",
                     "goals": 3,
                     "hieuSuat": {
@@ -2064,6 +2230,7 @@
                         "ghiChuTinhThan": "Thủ lĩnh tuyến giữa",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Thái Bá Đạt",
                     "playerID": "U1906",
                     "position": "Tiền vệ",
@@ -2090,6 +2257,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 66.0,
                         "chieuCao": 170.0,
@@ -2101,6 +2269,7 @@
                     "address": "Hải Dương, Việt Nam",
                     "cccd": "001206000010",
                     "contact": "0933445566",
+                    "danhSachGiaiThuong": [],
                     "dob": "03/06/2006",
                     "goals": 5,
                     "hieuSuat": {
@@ -2117,6 +2286,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Công Phương",
                     "playerID": "U1907",
                     "position": "Tiền vệ",
@@ -2143,6 +2313,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 65.0,
                         "chieuCao": 174.0,
@@ -2154,6 +2325,7 @@
                     "address": "Thừa Thiên Huế, Việt Nam",
                     "cccd": "001206000008",
                     "contact": "0922333444",
+                    "danhSachGiaiThuong": [],
                     "dob": "08/02/2006",
                     "goals": 2,
                     "hieuSuat": {
@@ -2170,6 +2342,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Vi Đình Thượng",
                     "playerID": "U1908",
                     "position": "Tiền vệ",
@@ -2196,6 +2369,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 64.0,
                         "chieuCao": 168.0,
@@ -2207,6 +2381,7 @@
                     "address": "Hà Tĩnh, Việt Nam",
                     "cccd": "001206000011",
                     "contact": "0911888999",
+                    "danhSachGiaiThuong": [],
                     "dob": "27/05/2006",
                     "goals": 4,
                     "hieuSuat": {
@@ -2223,6 +2398,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lê Đình Long Vũ",
                     "playerID": "U1909",
                     "position": "Tiền đạo",
@@ -2249,6 +2425,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 67.0,
                         "chieuCao": 172.0,
@@ -2260,6 +2437,7 @@
                     "address": "Kon Tum, Việt Nam",
                     "cccd": "001205000009",
                     "contact": "0909123123",
+                    "danhSachGiaiThuong": [],
                     "dob": "23/03/2005",
                     "goals": 3,
                     "hieuSuat": {
@@ -2276,6 +2454,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Hoàng Minh Tiến",
                     "playerID": "U1910",
                     "position": "Tiền đạo",
@@ -2302,6 +2481,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 70.0,
                         "chieuCao": 176.0,
@@ -2313,6 +2493,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001205000020",
                     "contact": "0999888777",
+                    "danhSachGiaiThuong": [],
                     "dob": "05/09/2005",
                     "goals": 2,
                     "hieuSuat": {
@@ -2329,6 +2510,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Đăng Dương",
                     "playerID": "U1911",
                     "position": "Tiền đạo",
@@ -2355,6 +2537,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 71.0,
                         "chieuCao": 178.0,
@@ -2365,6 +2548,7 @@
             ]
         },
         {
+            "danhHieuTapThe": [],
             "hlvPho": "Trịnh Quang Vinh",
             "hlvTruong": "Cristiano Roland",
             "id": "U17VN",
@@ -2374,6 +2558,7 @@
                     "address": "Bà Rịa, Việt Nam",
                     "cccd": "001208000001",
                     "contact": "0912345678",
+                    "danhSachGiaiThuong": [],
                     "dob": "15/03/2008",
                     "goals": 0,
                     "hieuSuat": {
@@ -2390,6 +2575,7 @@
                         "ghiChuTinhThan": "Tập trung",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Hoa Xuân Tín",
                     "playerID": "U1701",
                     "position": "Thủ môn",
@@ -2416,6 +2602,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 70.0,
                         "chieuCao": 178.0,
@@ -2427,6 +2614,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001208000005",
                     "contact": "0988777666",
+                    "danhSachGiaiThuong": [],
                     "dob": "20/06/2008",
                     "goals": 1,
                     "hieuSuat": {
@@ -2443,6 +2631,7 @@
                         "ghiChuTinhThan": "Thủ lĩnh",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lê Huy Việt Anh",
                     "playerID": "U1702",
                     "position": "Hậu vệ",
@@ -2469,6 +2658,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 175.0,
@@ -2480,6 +2670,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001208000003",
                     "contact": "0977665544",
+                    "danhSachGiaiThuong": [],
                     "dob": "12/02/2008",
                     "goals": 0,
                     "hieuSuat": {
@@ -2496,6 +2687,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Bạch Trọng Dương",
                     "playerID": "U1703",
                     "position": "Hậu vệ",
@@ -2522,6 +2714,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 66.0,
                         "chieuCao": 172.0,
@@ -2533,6 +2726,7 @@
                     "address": "Nghệ An, Việt Nam",
                     "cccd": "001208000004",
                     "contact": "0966555444",
+                    "danhSachGiaiThuong": [],
                     "dob": "05/08/2008",
                     "goals": 0,
                     "hieuSuat": {
@@ -2549,6 +2743,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Lê Tấn Dũng",
                     "playerID": "U1704",
                     "position": "Hậu vệ",
@@ -2575,6 +2770,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 65.0,
                         "chieuCao": 170.0,
@@ -2586,6 +2782,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001208000006",
                     "contact": "0955443322",
+                    "danhSachGiaiThuong": [],
                     "dob": "10/10/2008",
                     "goals": 2,
                     "hieuSuat": {
@@ -2602,6 +2799,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Đậu Hồng Phong",
                     "playerID": "U1705",
                     "position": "Tiền vệ",
@@ -2628,6 +2826,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 66.0,
                         "chieuCao": 171.0,
@@ -2639,6 +2838,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001208000008",
                     "contact": "0944333222",
+                    "danhSachGiaiThuong": [],
                     "dob": "14/04/2008",
                     "goals": 1,
                     "hieuSuat": {
@@ -2655,6 +2855,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Việt Long",
                     "playerID": "U1706",
                     "position": "Tiền vệ",
@@ -2681,6 +2882,7 @@
                         "theDo": 0,
                         "theVang": 2
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 64.0,
                         "chieuCao": 169.0,
@@ -2692,6 +2894,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001208000014",
                     "contact": "0933445566",
+                    "danhSachGiaiThuong": [],
                     "dob": "02/09/2008",
                     "goals": 3,
                     "hieuSuat": {
@@ -2708,6 +2911,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Hoàng Trọng Duy Khang",
                     "playerID": "U1707",
                     "position": "Tiền vệ",
@@ -2734,6 +2938,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 67.0,
                         "chieuCao": 173.0,
@@ -2745,6 +2950,7 @@
                     "address": "Gia Lai, Việt Nam",
                     "cccd": "001208000010",
                     "contact": "0922333444",
+                    "danhSachGiaiThuong": [],
                     "dob": "03/01/2008",
                     "goals": 10,
                     "hieuSuat": {
@@ -2761,6 +2967,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Trần Gia Bảo",
                     "playerID": "U1708",
                     "position": "Tiền đạo",
@@ -2787,6 +2994,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 72.0,
                         "chieuCao": 178.0,
@@ -2798,6 +3006,7 @@
                     "address": "Hà Nội, Việt Nam",
                     "cccd": "001208000009",
                     "contact": "0911888999",
+                    "danhSachGiaiThuong": [],
                     "dob": "11/05/2008",
                     "goals": 5,
                     "hieuSuat": {
@@ -2814,6 +3023,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Thiên Phú",
                     "playerID": "U1709",
                     "position": "Tiền đạo",
@@ -2840,6 +3050,7 @@
                         "theDo": 0,
                         "theVang": 1
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 69.0,
                         "chieuCao": 176.0,
@@ -2851,6 +3062,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001208000011",
                     "contact": "0909123123",
+                    "danhSachGiaiThuong": [],
                     "dob": "22/08/2008",
                     "goals": 3,
                     "hieuSuat": {
@@ -2867,6 +3079,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Nguyễn Văn Bách",
                     "playerID": "U1710",
                     "position": "Tiền đạo",
@@ -2893,6 +3106,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 65.0,
                         "chieuCao": 172.0,
@@ -2904,6 +3118,7 @@
                     "address": "Hưng Yên, Việt Nam",
                     "cccd": "001208000020",
                     "contact": "0999888777",
+                    "danhSachGiaiThuong": [],
                     "dob": "15/12/2008",
                     "goals": 2,
                     "hieuSuat": {
@@ -2920,6 +3135,7 @@
                         "ghiChuTinhThan": "",
                         "thaiDo": "Tốt"
                     },
+                    "lichSuTranDau": [],
                     "name": "Bùi Duy Đăng",
                     "playerID": "U1711",
                     "position": "Tiền đạo",
@@ -2946,6 +3162,7 @@
                         "theDo": 0,
                         "theVang": 0
                     },
+                    "thanhTichCungDoi": [],
                     "theLuc": {
                         "canNang": 68.0,
                         "chieuCao": 174.0,

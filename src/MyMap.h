@@ -245,6 +245,19 @@ public:
     size_t size() const { return count_; }
     bool empty() const { return count_ == 0; }
 
+    iterator begin()
+    {
+        // Convert InternalPair vector to Pair vector for iterator
+        MyVector<Pair> *pairs = reinterpret_cast<MyVector<Pair> *>(&buckets);
+        return iterator(pairs, 0);
+    }
+
+    iterator end()
+    {
+        MyVector<Pair> *pairs = reinterpret_cast<MyVector<Pair> *>(&buckets);
+        return iterator(pairs, buckets.size());
+    }
+
     void clear()
     {
         for (size_t i = 0; i < buckets.size(); ++i)

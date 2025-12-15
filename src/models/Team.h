@@ -5,18 +5,32 @@
 #include "../MyVector.h"
 #include "Player.h"
 
+// Struct cho danh hiệu tập thể của đội
+struct TeamAward {
+    std::string tenGiai;         // Tên giải: "V-League", "Cup Quoc Gia", etc.
+    int nam;                     // Năm đạt giải
+    int xepHang;                 // 1=Vô địch, 2=Á quân, 3=Hạng ba
+    std::string ghiChu;          // Ghi chú thêm
+    
+    TeamAward() : tenGiai(""), nam(0), xepHang(1), ghiChu("") {}
+    
+    TeamAward(const std::string& ten, int y, int rank, const std::string& note = "")
+        : tenGiai(ten), nam(y), xepHang(rank), ghiChu(note) {}
+};
+
 class Team
 {
 private:
     std::string idDoi, tenDoi;
     std::string hlvTruong, hlvPho;
     MyVector<Player> cauThu;
+    MyVector<TeamAward> danhHieuTapThe;  // Danh sách danh hiệu tập thể
 
 public:
     Team() : hlvTruong(""), hlvPho("") {}
     Team(const std::string &id, const std::string &ten) : idDoi(id), tenDoi(ten), hlvTruong(""), hlvPho("") {}
 
-    Team(const Team &other) : idDoi(other.idDoi), tenDoi(other.tenDoi), hlvTruong(other.hlvTruong), hlvPho(other.hlvPho), cauThu(other.cauThu) {}
+    Team(const Team &other) : idDoi(other.idDoi), tenDoi(other.tenDoi), hlvTruong(other.hlvTruong), hlvPho(other.hlvPho), cauThu(other.cauThu), danhHieuTapThe(other.danhHieuTapThe) {}
 
     Team &operator=(const Team &other)
     {
@@ -27,6 +41,7 @@ public:
             hlvTruong = other.hlvTruong;
             hlvPho = other.hlvPho;
             cauThu = other.cauThu;
+            danhHieuTapThe = other.danhHieuTapThe;
         }
         return *this;
     }
@@ -42,6 +57,20 @@ public:
     void setHLVPho(const std::string &ten) { hlvPho = ten; }
     MyVector<Player> &getPlayers() { return cauThu; }
     const MyVector<Player> &getPlayers() const { return cauThu; }
+    
+    // Getter/Setter cho danh hiệu tập thể
+    MyVector<TeamAward>& getDanhHieuTapThe() { return danhHieuTapThe; }
+    const MyVector<TeamAward>& getDanhHieuTapThe() const { return danhHieuTapThe; }
+    
+    void addDanhHieuTapThe(const TeamAward& award) {
+        danhHieuTapThe.push_back(award);
+    }
+    
+    void removeDanhHieuTapThe(int index) {
+        if (index >= 0 && index < (int)danhHieuTapThe.size()) {
+            danhHieuTapThe.erase(danhHieuTapThe.begin() + index);
+        }
+    }
 
     void themCauThu(const Player &p)
     {
