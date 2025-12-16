@@ -1358,6 +1358,7 @@ private:
     bool showStatsDetail;
     int statsDetailType; // 0: cầu thủ, 1: bàn thắng, 2: lương
     int statsDetailScrollOffset;
+    int statsSelectedYear; // Năm được chọn để lọc thống kê (0 = tất cả)
 
     // Popup lịch sử trận đấu
     bool showMatchHistory;
@@ -1428,7 +1429,7 @@ public:
                              showEditTeam(false), editingTeamIndex2(-1),
                              showEditRole(false), editingRoleTeamIndex(-1), roleScrollOffset(0),
                              showDeleteConfirm(false), deletePlayerID(""), deletePlayerName(""), deletePlayerTeam(nullptr),
-                             showStatsDetail(false), statsDetailType(0), statsDetailScrollOffset(0),
+                             showStatsDetail(false), statsDetailType(0), statsDetailScrollOffset(0), statsSelectedYear(0),
                              showMatchHistory(false), matchHistoryPlayer(nullptr), matchHistoryTeamName(""), matchHistoryScrollOffset(0),
                              showAddMatch(false),
                              showHonorPopup(false), honorPopupPlayer(nullptr), honorPopupTeamName(""),
@@ -2369,8 +2370,8 @@ public:
 
     void drawStatistics()
     {
-        // Biến lưu năm được chọn để lọc (static để giữ giá trị)
-        static int selectedYear = 0; // 0 = Tất cả
+        // Dùng biến member statsSelectedYear thay vì static local
+        int &selectedYear = statsSelectedYear;
 
         int sidebarWidth = max(200, screenWidth / 7);
         int contentX = sidebarWidth + 30;
@@ -3453,6 +3454,7 @@ public:
         string title;
         Color headerColor;
         string columnHeader;
+        string yearSuffix = (statsSelectedYear == 0) ? u8" - TẤT CẢ" : (u8" - NĂM " + to_string(statsSelectedYear));
 
         if (statsDetailType == 0)
         {
@@ -3462,7 +3464,7 @@ public:
         }
         else if (statsDetailType == 1)
         {
-            title = u8"THỐNG KÊ BÀN THẮNG TỪNG ĐỘI";
+            title = u8"BÀN THẮNG TỪNG ĐỘI" + yearSuffix;
             headerColor = ACCENT_2;
             columnHeader = u8"Bàn thắng";
         }
@@ -3548,7 +3550,31 @@ public:
                 }
                 else if (statsDetailType == 1)
                 {
-                    numValue = team.tongBanThang();
+                    // Tính bàn thắng từ lịch sử trận đấu, lọc theo năm
+                    numValue = 0;
+                    for (const auto &p : team.getPlayers())
+                    {
+                        for (const auto &match : p.getLichSuTranDau())
+                        {
+                            int matchYear = 0;
+                            if (match.ngayThiDau.length() >= 10)
+                            {
+                                try
+                                {
+                                    matchYear = stoi(match.ngayThiDau.substr(6, 4));
+                                }
+                                catch (...)
+                                {
+                                    matchYear = 0;
+                                }
+                            }
+                            // Nếu statsSelectedYear == 0 (Tất cả) thì lấy hết, còn không thì lọc theo năm
+                            if (statsSelectedYear == 0 || matchYear == statsSelectedYear)
+                            {
+                                numValue += match.banThang;
+                            }
+                        }
+                    }
                     value = to_string(numValue);
                 }
                 else
