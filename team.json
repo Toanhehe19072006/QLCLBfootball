@@ -50,7 +50,7 @@
                     "name": "Nguyễn Filip",
                     "playerID": "VN01",
                     "position": "Thủ môn",
-                    "role": "DP",
+                    "role": "DT",
                     "salary": 60000.0,
                     "soAo": 1,
                     "sucKhoe": {
@@ -124,7 +124,7 @@
                     "name": "Nguyễn Hoàng Đức",
                     "playerID": "VN02",
                     "position": "Tiền vệ",
-                    "role": "DT",
+                    "role": "DP",
                     "salary": 80000.0,
                     "soAo": 14,
                     "sucKhoe": {
