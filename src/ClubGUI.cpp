@@ -19,10 +19,6 @@
 // TELEX INPUT ENGINE - Built-in Vietnamese typing
 // ========================================
 // Tắt EVKey/Unikey khi dùng app này!
-
-#include "MyMap.h"
-#include "MyVector.h"
-
 // Check if character is a Vietnamese vowel (base or with diacritics)
 bool isVietnameseVowel(const std::string &ch)
 {
@@ -1122,6 +1118,43 @@ void initColors()
     ASSISTANT_COACH_COLOR = {155, 89, 182, 255};
 }
 
+// Hàm vẽ rectangle bo góc với gradient ngang
+void DrawRectangleRoundedGradientH(Rectangle rec, float roundness, int segments, Color left, Color right)
+{
+    // Vẽ gradient bằng nhiều đường dọc nhỏ
+    int steps = (int)rec.width;
+    for (int i = 0; i < steps; i++)
+    {
+        float t = (float)i / (float)steps;
+        Color col = {
+            (unsigned char)(left.r + (right.r - left.r) * t),
+            (unsigned char)(left.g + (right.g - left.g) * t),
+            (unsigned char)(left.b + (right.b - left.b) * t),
+            (unsigned char)(left.a + (right.a - left.a) * t)};
+
+        float x = rec.x + i;
+        float margin = 0;
+
+        // Tính margin cho bo góc
+        if (i < rec.height * roundness || i > rec.width - rec.height * roundness)
+        {
+            float cornerRadius = rec.height * roundness;
+            float distFromCorner;
+            if (i < cornerRadius)
+                distFromCorner = cornerRadius - i;
+            else
+                distFromCorner = i - (rec.width - cornerRadius);
+
+            if (distFromCorner > 0 && distFromCorner < cornerRadius)
+            {
+                margin = cornerRadius - sqrt(cornerRadius * cornerRadius - distFromCorner * distFromCorner);
+            }
+        }
+
+        DrawLineEx({x, rec.y + margin}, {x, rec.y + rec.height - margin}, 1, col);
+    }
+}
+
 void DrawTextEx2(string text, int x, int y, int fontSize, Color color)
 {
     DrawTextEx(customFont, text.c_str(), {(float)x, (float)y}, (float)fontSize, 1.0f, color);
@@ -1313,6 +1346,15 @@ private:
     MyVector<pair<Player, string>> searchResults;
     int screenWidth, screenHeight;
 
+    // Hệ thống đăng nhập
+    bool isLoggedIn;
+    bool isAdmin; // true = Admin (full quyền), false = User (chỉ xem)
+    string loginUsername;
+    string loginPassword;
+    string loginError;
+    float loginErrorTimer; // Timer để tự động ẩn thông báo lỗi
+    int loginActiveField;  // 0 = username, 1 = password
+
     bool showPlayerDetail;
     Player selectedPlayer;
     string selectedPlayerTeam;
@@ -1353,6 +1395,11 @@ private:
     string deletePlayerID;
     string deletePlayerName;
     Team *deletePlayerTeam;
+
+    // Popup xác nhận xóa đội bóng
+    bool showDeleteTeamConfirm;
+    int deleteTeamIndex;
+    string deleteTeamName;
 
     // Popup thống kê chi tiết từng đội
     bool showStatsDetail;
@@ -1429,6 +1476,7 @@ public:
                              showEditTeam(false), editingTeamIndex2(-1),
                              showEditRole(false), editingRoleTeamIndex(-1), roleScrollOffset(0),
                              showDeleteConfirm(false), deletePlayerID(""), deletePlayerName(""), deletePlayerTeam(nullptr),
+                             showDeleteTeamConfirm(false), deleteTeamIndex(-1), deleteTeamName(""),
                              showStatsDetail(false), statsDetailType(0), statsDetailScrollOffset(0), statsSelectedYear(0),
                              showMatchHistory(false), matchHistoryPlayer(nullptr), matchHistoryTeamName(""), matchHistoryScrollOffset(0),
                              showAddMatch(false),
@@ -1441,7 +1489,8 @@ public:
                              tempMucTheLuc(0), tempChieuCao(0), tempCanNang(0), tempTiLeMo(0),
                              tempBanThangHieuSuat(0), tempKienTao(0), tempChuyenDung(0), tempDiemPhongDo(0),
                              tempDiemDanhGiaTap(0), tempCuongDoTapLuyen(""), tempGhiChuTapLuyen(""),
-                             tempThaiDo(""), tempCoViPham(false), tempChiTietViPham(""), tempGhiChuTinhThan("")
+                             tempThaiDo(""), tempCoViPham(false), tempChiTietViPham(""), tempGhiChuTinhThan(""),
+                             isLoggedIn(false), isAdmin(false), loginUsername(""), loginPassword(""), loginError(""), loginErrorTimer(0), loginActiveField(0)
     {
     }
 
@@ -1652,8 +1701,14 @@ public:
 
         DrawTextEx2(p.getTen(), badgeX, y + 10, 18, TEXT_DARK);
 
+        // Tính bàn thắng từ lịch sử trận đấu để đồng nhất
+        int playerGoalsFromHistory = 0;
+        for (const auto &match : p.getLichSuTranDau())
+        {
+            playerGoalsFromHistory += match.banThang;
+        }
         string info = u8"Mã: " + p.getMaCauThu() + " | " + teamName + " | " + p.getViTri() +
-                      " | BT: " + to_string(p.getBanThang()) +
+                      " | BT: " + to_string(playerGoalsFromHistory) +
                       " | Lương: " + formatVND(p.getLuong(), true);
         DrawTextEx2(info, x + 20, y + 38, 13, ACCENT_1);
 
@@ -1671,19 +1726,23 @@ public:
             showPlayerDetail = true;
         }
 
-        Button deleteBtn;
-        deleteBtn.rect = {(float)(x + cardWidth - 100), (float)(y + 10), 80, 40};
-        deleteBtn.text = u8"XÓA";
-        deleteBtn.color = ACCENT_2;
-        deleteBtn.hoverColor = {192, 57, 43, 255};
-        deleteBtn.draw();
-
-        if (deleteBtn.isClicked() && team != nullptr)
+        // Chỉ hiển thị nút XÓA khi là Admin
+        if (isAdmin)
         {
-            showDeleteConfirm = true;
-            deletePlayerID = p.getID();
-            deletePlayerName = p.getTen();
-            deletePlayerTeam = team;
+            Button deleteBtn;
+            deleteBtn.rect = {(float)(x + cardWidth - 100), (float)(y + 10), 80, 40};
+            deleteBtn.text = u8"XÓA";
+            deleteBtn.color = ACCENT_2;
+            deleteBtn.hoverColor = {192, 57, 43, 255};
+            deleteBtn.draw();
+
+            if (deleteBtn.isClicked() && team != nullptr)
+            {
+                showDeleteConfirm = true;
+                deletePlayerID = p.getID();
+                deletePlayerName = p.getTen();
+                deletePlayerTeam = team;
+            }
         }
 
         Rectangle cardRect = {(float)x, (float)y, (float)(cardWidth - 200), 70};
@@ -1810,7 +1869,13 @@ public:
         DrawRectangle(popupX + 30, popupY + popupHeight - 100, popupWidth - 60, 70, (Color){240, 248, 255, 255});
         DrawTextEx2(u8"ĐỘI BÓNG: " + selectedPlayerTeam, leftCol, popupY + popupHeight - 85, 16, ACCENT_1);
         DrawTextEx2(u8"VỊ TRÍ: " + selectedPlayer.getViTri(), leftCol, popupY + popupHeight - 60, 16, ACCENT_1);
-        DrawTextEx2(u8"BÀN THẮNG: " + to_string(selectedPlayer.getBanThangHieuSuat()), rightCol - 50, popupY + popupHeight - 85, 16, ACCENT_2);
+        // Tính bàn thắng từ lịch sử trận đấu để đồng nhất
+        int cccdGoals = 0;
+        for (const auto &match : selectedPlayer.getLichSuTranDau())
+        {
+            cccdGoals += match.banThang;
+        }
+        DrawTextEx2(u8"BÀN THẮNG: " + to_string(cccdGoals), rightCol - 50, popupY + popupHeight - 85, 16, ACCENT_2);
         DrawTextEx2(u8"LƯƠNG: " + formatVND(selectedPlayer.getLuong(), true), rightCol - 50, popupY + popupHeight - 60, 16, (Color){46, 204, 113, 255});
     }
 
@@ -1841,47 +1906,60 @@ public:
 
             DrawRectangleRounded({(float)contentX, 160, (float)(contentWidth), 130}, 0.1f, 10, ACCENT_1);
             DrawTextEx2(team.getTenDoi(), contentX + 40, 170, 28, TEXT_LIGHT);
+            // Tính bàn thắng từ lịch sử trận đấu để đồng nhất với tab Thống kê
+            int teamGoals = 0;
+            for (auto &p : team.getPlayers())
+            {
+                for (const auto &match : p.getLichSuTranDau())
+                {
+                    teamGoals += match.banThang;
+                }
+            }
             string info = u8"Số cầu thủ: " + to_string(team.getPlayers().size()) +
-                          u8" | Tổng bàn thắng: " + to_string(team.tongBanThang());
+                          u8" | Tổng bàn thắng: " + to_string(teamGoals);
             DrawTextEx2(info, contentX + 40, 205, 18, TEXT_LIGHT);
 
             string hlvInfo = u8"HLV trưởng: " + (team.getHLVTruong().empty() ? u8"Chưa có" : team.getHLVTruong()) +
                              u8"  |  HLV phó: " + (team.getHLVPho().empty() ? u8"Chưa có" : team.getHLVPho());
             DrawTextEx2(hlvInfo, contentX + 40, 235, 16, (Color){255, 255, 255, 200});
 
-            Button editHLVBtn;
-            editHLVBtn.rect = {(float)(contentX + contentWidth - 150), 165, 130, 35};
-            editHLVBtn.text = u8"SỬA HLV";
-            editHLVBtn.color = CAPTAIN_COLOR;
-            editHLVBtn.hoverColor = {194, 144, 34, 255};
-            editHLVBtn.draw();
-
-            if (editHLVBtn.isClicked())
+            // Chỉ hiển thị nút SỬA HLV và ĐỔI VAI TRÒ khi là Admin
+            if (isAdmin)
             {
-                showEditHLV = true;
-                editingHLVTeamIndex = selectedTeamIndex;
-                hlvInputs.clear();
-                // Input fields sẽ được tạo trong drawEditHLVPopup() với vị trí động
-                hlvInputs.push_back(InputField({0, 0, 500, 40}, u8"HLV trưởng:", 50));
-                hlvInputs.push_back(InputField({0, 0, 500, 40}, u8"HLV phó:", 50));
-                hlvInputs[0].text = team.getHLVTruong();
-                hlvInputs[1].text = team.getHLVPho();
-            }
+                Button editHLVBtn;
+                editHLVBtn.rect = {(float)(contentX + contentWidth - 150), 165, 130, 35};
+                editHLVBtn.text = u8"SỬA HLV";
+                editHLVBtn.color = CAPTAIN_COLOR;
+                editHLVBtn.hoverColor = {194, 144, 34, 255};
+                editHLVBtn.draw();
 
-            // Button đổi vai trò đội trưởng/đội phó
-            Button editRoleBtn;
-            editRoleBtn.rect = {(float)(contentX + contentWidth - 290), 165, 130, 35};
-            editRoleBtn.text = u8"ĐỔI VAI TRÒ";
-            editRoleBtn.color = {243, 156, 18, 255};
-            editRoleBtn.hoverColor = {211, 132, 13, 255};
-            editRoleBtn.draw();
+                if (editHLVBtn.isClicked())
+                {
+                    showEditHLV = true;
+                    editingHLVTeamIndex = selectedTeamIndex;
+                    hlvInputs.clear();
+                    // Input fields sẽ được tạo trong drawEditHLVPopup() với vị trí động
+                    hlvInputs.push_back(InputField({0, 0, 500, 40}, u8"HLV trưởng:", 50));
+                    hlvInputs.push_back(InputField({0, 0, 500, 40}, u8"HLV phó:", 50));
+                    hlvInputs[0].text = team.getHLVTruong();
+                    hlvInputs[1].text = team.getHLVPho();
+                }
 
-            if (editRoleBtn.isClicked())
-            {
-                showEditRole = true;
-                editingRoleTeamIndex = selectedTeamIndex;
-                roleScrollOffset = 0;
-            }
+                // Button đổi vai trò đội trưởng/đội phó
+                Button editRoleBtn;
+                editRoleBtn.rect = {(float)(contentX + contentWidth - 290), 165, 130, 35};
+                editRoleBtn.text = u8"ĐỔI VAI TRÒ";
+                editRoleBtn.color = {243, 156, 18, 255};
+                editRoleBtn.hoverColor = {211, 132, 13, 255};
+                editRoleBtn.draw();
+
+                if (editRoleBtn.isClicked())
+                {
+                    showEditRole = true;
+                    editingRoleTeamIndex = selectedTeamIndex;
+                    roleScrollOffset = 0;
+                }
+            } // Đóng ngoặc isAdmin cho phần SỬA HLV và ĐỔI VAI TRÒ
 
             DrawTextEx2(u8"DANH SÁCH CẦU THỦ", contentX + 20, 310, 20, TEXT_DARK);
 
@@ -1933,7 +2011,14 @@ public:
         for (auto &team : clb->getTeams())
         {
             totalPlayers += team.getPlayers().size();
-            totalGoals += team.tongBanThang();
+            // Tính bàn thắng từ lịch sử trận đấu để đồng nhất với tab Thống kê
+            for (auto &p : team.getPlayers())
+            {
+                for (const auto &match : p.getLichSuTranDau())
+                {
+                    totalGoals += match.banThang;
+                }
+            }
         }
 
         int cardWidth = (contentWidth - 60) / 3;
@@ -1967,8 +2052,17 @@ public:
 
             DrawRectangleRounded(teamRect, 0.1f, 10, cardColor);
             DrawTextEx2(team.getTenDoi(), contentX + 30, y + 15, 22, TEXT_DARK);
+            // Tính bàn thắng từ lịch sử trận đấu để đồng nhất với tab Thống kê
+            int teamGoals = 0;
+            for (auto &p : team.getPlayers())
+            {
+                for (const auto &match : p.getLichSuTranDau())
+                {
+                    teamGoals += match.banThang;
+                }
+            }
             string info = "So cau thu: " + to_string(team.getPlayers().size()) +
-                          " | Bàn thắng: " + to_string(team.tongBanThang());
+                          " | Bàn thắng: " + to_string(teamGoals);
             DrawTextEx2(info, contentX + 30, y + 45, 16, ACCENT_1);
 
             if (isHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
@@ -1999,63 +2093,73 @@ public:
         }
 
         DrawRectangleRounded({(float)contentX, 120, (float)contentWidth, 120}, 0.1f, 10, CARD_BG);
-        for (auto &input : inputs)
+
+        // Chỉ hiển thị form thêm đội khi là Admin
+        if (isAdmin)
         {
-            input.draw();
-            input.update();
-        }
-
-        Button addBtn;
-        addBtn.rect = {(float)(contentX + contentWidth - 200), 250, 200, 45};
-        addBtn.text = u8"THÊM ĐỘI";
-        addBtn.color = ACCENT_1;
-        addBtn.hoverColor = {41, 128, 185, 255};
-        addBtn.draw();
-
-        if (addBtn.isClicked() && !inputs[0].text.empty() && !inputs[1].text.empty())
-        {
-            string newTeamID = inputs[0].text;
-            string newTeamName = inputs[1].text;
-
-            // Loại bỏ khoảng trắng ở đầu và cuối
-            while (!newTeamID.empty() && (newTeamID[0] == ' ' || newTeamID[0] == '\t'))
-                newTeamID.erase(0, 1);
-            while (!newTeamID.empty() && (newTeamID.back() == ' ' || newTeamID.back() == '\t'))
-                newTeamID.pop_back();
-
-            // Kiểm tra trùng mã đội (không phân biệt hoa thường)
-            bool isDuplicate = false;
-            for (auto &team : clb->getTeams())
+            for (auto &input : inputs)
             {
-                string existingID = team.getIDDoi();
-                // Trim existing ID
-                while (!existingID.empty() && (existingID[0] == ' ' || existingID[0] == '\t'))
-                    existingID.erase(0, 1);
-                while (!existingID.empty() && (existingID.back() == ' ' || existingID.back() == '\t'))
-                    existingID.pop_back();
+                input.draw();
+                input.update();
+            }
 
-                // So sánh không phân biệt hoa thường
-                string newIDLower = newTeamID;
-                string existingIDLower = existingID;
-                transform(newIDLower.begin(), newIDLower.end(), newIDLower.begin(), ::tolower);
-                transform(existingIDLower.begin(), existingIDLower.end(), existingIDLower.begin(), ::tolower);
+            Button addBtn;
+            addBtn.rect = {(float)(contentX + contentWidth - 200), 250, 200, 45};
+            addBtn.text = u8"THÊM ĐỘI";
+            addBtn.color = ACCENT_1;
+            addBtn.hoverColor = {41, 128, 185, 255};
+            addBtn.draw();
 
-                if (newIDLower == existingIDLower)
+            if (addBtn.isClicked() && !inputs[0].text.empty() && !inputs[1].text.empty())
+            {
+                string newTeamID = inputs[0].text;
+                string newTeamName = inputs[1].text;
+
+                // Loại bỏ khoảng trắng ở đầu và cuối
+                while (!newTeamID.empty() && (newTeamID[0] == ' ' || newTeamID[0] == '\t'))
+                    newTeamID.erase(0, 1);
+                while (!newTeamID.empty() && (newTeamID.back() == ' ' || newTeamID.back() == '\t'))
+                    newTeamID.pop_back();
+
+                // Kiểm tra trùng mã đội (không phân biệt hoa thường)
+                bool isDuplicate = false;
+                for (auto &team : clb->getTeams())
                 {
-                    showMessage(u8"Mã đội đã tồn tại!");
-                    isDuplicate = true;
-                    break;
+                    string existingID = team.getIDDoi();
+                    // Trim existing ID
+                    while (!existingID.empty() && (existingID[0] == ' ' || existingID[0] == '\t'))
+                        existingID.erase(0, 1);
+                    while (!existingID.empty() && (existingID.back() == ' ' || existingID.back() == '\t'))
+                        existingID.pop_back();
+
+                    // So sánh không phân biệt hoa thường
+                    string newIDLower = newTeamID;
+                    string existingIDLower = existingID;
+                    transform(newIDLower.begin(), newIDLower.end(), newIDLower.begin(), ::tolower);
+                    transform(existingIDLower.begin(), existingIDLower.end(), existingIDLower.begin(), ::tolower);
+
+                    if (newIDLower == existingIDLower)
+                    {
+                        showMessage(u8"Mã đội đã tồn tại!");
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+
+                if (!isDuplicate)
+                {
+                    Team newTeam(newTeamID, newTeamName);
+                    clb->themTeam(newTeam);
+                    saveToJson(*clb);
+                    showMessage(u8"Đã thêm đội thành công!");
+                    inputs.clear();
                 }
             }
-
-            if (!isDuplicate)
-            {
-                Team newTeam(newTeamID, newTeamName);
-                clb->themTeam(newTeam);
-                saveToJson(*clb);
-                showMessage(u8"Đã thêm đội thành công!");
-                inputs.clear();
-            }
+        } // Đóng ngoặc isAdmin cho phần thêm đội
+        else
+        {
+            // Hiển thị thông báo cho User
+            DrawTextEx2(u8"[Chế độ xem - Không có quyền thêm/sửa/xóa]", contentX + 20, 170, 16, (Color){241, 196, 15, 255});
         }
 
         DrawTextEx2(u8"DANH SÁCH ĐỘI BÓNG", contentX, 330, 22, TEXT_DARK);
@@ -2079,40 +2183,43 @@ public:
                           to_string(team.getPlayers().size());
             DrawTextEx2(info, contentX + 30, y + 38, 16, ACCENT_1);
 
-            Button editTeamBtn;
-            editTeamBtn.rect = {(float)(contentX + contentWidth - 240), (float)(y + 15), 110, 40};
-            editTeamBtn.text = u8"ĐỔI TÊN";
-            editTeamBtn.color = ACCENT_1;
-            editTeamBtn.hoverColor = {41, 128, 185, 255};
-            editTeamBtn.draw();
-
-            Button deleteBtn;
-            deleteBtn.rect = {(float)(contentX + contentWidth - 120), (float)(y + 15), 100, 40};
-            deleteBtn.text = u8"XOÁ ĐỘI";
-            deleteBtn.color = ACCENT_2;
-            deleteBtn.hoverColor = {192, 57, 43, 255};
-            deleteBtn.draw();
-
-            if (editTeamBtn.isClicked())
+            // Chỉ hiển thị nút ĐỔI TÊN và XOÁ ĐỘI khi là Admin
+            if (isAdmin)
             {
-                editingTeamIndex2 = teamIndex;
-                showEditTeam = true;
-                teamEditInputs.clear();
-            }
+                Button editTeamBtn;
+                editTeamBtn.rect = {(float)(contentX + contentWidth - 240), (float)(y + 15), 110, 40};
+                editTeamBtn.text = u8"ĐỔI TÊN";
+                editTeamBtn.color = ACCENT_1;
+                editTeamBtn.hoverColor = {41, 128, 185, 255};
+                editTeamBtn.draw();
 
-            if (deleteBtn.isClicked())
-            {
-                if (team.getPlayers().size() > 0)
+                Button deleteBtn;
+                deleteBtn.rect = {(float)(contentX + contentWidth - 120), (float)(y + 15), 100, 40};
+                deleteBtn.text = u8"XOÁ ĐỘI";
+                deleteBtn.color = ACCENT_2;
+                deleteBtn.hoverColor = {192, 57, 43, 255};
+                deleteBtn.draw();
+
+                if (editTeamBtn.isClicked())
                 {
-                    showMessage(u8"Không thể xóa đội còn thành viên!");
+                    editingTeamIndex2 = teamIndex;
+                    showEditTeam = true;
+                    teamEditInputs.clear();
                 }
-                else
+
+                if (deleteBtn.isClicked())
                 {
-                    string teamName = team.getTenDoi();
-                    it = clb->getTeams().erase(it);
-                    saveToJson(*clb);
-                    showMessage(u8"Đã xoá đội: " + teamName);
-                    teamDeleted = true;
+                    if (team.getPlayers().size() > 0)
+                    {
+                        showMessage(u8"Không thể xóa đội còn thành viên!");
+                    }
+                    else
+                    {
+                        // Hiển thị popup xác nhận xóa đội
+                        showDeleteTeamConfirm = true;
+                        deleteTeamIndex = teamIndex;
+                        deleteTeamName = team.getTenDoi();
+                    }
                 }
             }
 
@@ -2211,135 +2318,139 @@ public:
             inputs.push_back(InputField({(float)(contentX + 3 * (fieldWidth + 20)), 200, (float)fieldWidth, 40}, u8"Mã/Tên Đội: (VD: T001)", 40));
         }
 
-        for (auto &input : inputs)
+        // Chỉ hiển thị form thêm cầu thủ khi là Admin
+        if (isAdmin)
         {
-            input.draw();
-            input.update();
-        }
-
-        Button addBtn;
-        addBtn.rect = {(float)(contentX + contentWidth - 340), 270, 140, 45};
-        addBtn.text = u8"THÊM";
-        addBtn.color = ACCENT_1;
-        addBtn.hoverColor = {41, 128, 185, 255};
-        addBtn.draw();
-
-        Button clearBtn;
-        clearBtn.rect = {(float)(contentX + contentWidth - 180), 270, 140, 45};
-        clearBtn.text = u8"XOÁ FORM";
-        clearBtn.color = {149, 165, 166, 255};
-        clearBtn.hoverColor = {127, 140, 141, 255};
-        clearBtn.draw();
-
-        if (clearBtn.isClicked())
-        {
-            inputs.clear();
-            showMessage(u8"Đã xoá form!");
-        }
-
-        if (addBtn.isClicked())
-        {
-            try
+            for (auto &input : inputs)
             {
-                if (inputs.size() < 9)
+                input.draw();
+                input.update();
+            }
+
+            Button addBtn;
+            addBtn.rect = {(float)(contentX + contentWidth - 340), 270, 140, 45};
+            addBtn.text = u8"THÊM";
+            addBtn.color = ACCENT_1;
+            addBtn.hoverColor = {41, 128, 185, 255};
+            addBtn.draw();
+
+            Button clearBtn;
+            clearBtn.rect = {(float)(contentX + contentWidth - 180), 270, 140, 45};
+            clearBtn.text = u8"XOÁ FORM";
+            clearBtn.color = {149, 165, 166, 255};
+            clearBtn.hoverColor = {127, 140, 141, 255};
+            clearBtn.draw();
+
+            if (clearBtn.isClicked())
+            {
+                inputs.clear();
+                showMessage(u8"Đã xoá form!");
+            }
+
+            if (addBtn.isClicked())
+            {
+                try
                 {
-                    showMessage(u8"Form không hợp lệ!");
-                }
-                else
-                {
-                    string sSalary = trimCopy(inputs[7].text);
-
-                    double salary = 0;
-                    if (!sSalary.empty())
+                    if (inputs.size() < 9)
                     {
-                        if (!isDoubleString(sSalary))
-                        {
-                            showMessage(u8"Lương phải là số!");
-                            goto SKIP_ADD_PLAYER;
-                        }
-                        salary = stod(sSalary);
+                        showMessage(u8"Form không hợp lệ!");
                     }
-
-                    string idCT = trimCopy(inputs[0].text);
-                    string hoTen = trimCopy(inputs[1].text);
-                    string viTri = trimCopy(inputs[2].text);
-                    string ngaySinh = trimCopy(inputs[3].text);
-                    string cccd = trimCopy(inputs[4].text);
-                    string queQuan = trimCopy(inputs[5].text);
-                    string sdt = trimCopy(inputs[6].text);
-                    string teamKeyRaw = trimCopy(inputs[8].text);
-
-                    if (idCT.empty() || hoTen.empty() || teamKeyRaw.empty())
+                    else
                     {
-                        showMessage(u8"Vui lòng nhập Mã CT, Họ Tên và Mã/Tên Đội!");
-                        goto SKIP_ADD_PLAYER;
-                    }
+                        string sSalary = trimCopy(inputs[7].text);
 
-                    // Kiểm tra trùng mã cầu thủ (không phân biệt hoa thường)
-                    string idCTLower = idCT;
-                    transform(idCTLower.begin(), idCTLower.end(), idCTLower.begin(), ::tolower);
-
-                    for (auto &team : clb->getTeams())
-                    {
-                        for (auto &p : team.getPlayers())
+                        double salary = 0;
+                        if (!sSalary.empty())
                         {
-                            string existingID = p.getMaCauThu();
-                            string existingIDLower = existingID;
-                            transform(existingIDLower.begin(), existingIDLower.end(), existingIDLower.begin(), ::tolower);
-
-                            if (existingIDLower == idCTLower)
+                            if (!isDoubleString(sSalary))
                             {
-                                showMessage(u8"Mã cầu thủ đã tồn tại!");
+                                showMessage(u8"Lương phải là số!");
                                 goto SKIP_ADD_PLAYER;
                             }
+                            salary = stod(sSalary);
                         }
-                    }
 
-                    Player newPlayer(idCT, hoTen, ngaySinh, queQuan, sdt, idCT, viTri,
-                                     0, "", salary, "", "", cccd);
+                        string idCT = trimCopy(inputs[0].text);
+                        string hoTen = trimCopy(inputs[1].text);
+                        string viTri = trimCopy(inputs[2].text);
+                        string ngaySinh = trimCopy(inputs[3].text);
+                        string cccd = trimCopy(inputs[4].text);
+                        string queQuan = trimCopy(inputs[5].text);
+                        string sdt = trimCopy(inputs[6].text);
+                        string teamKeyRaw = trimCopy(inputs[8].text);
 
-                    string teamKeyLower = toLowerCopy(teamKeyRaw);
-                    bool found = false;
-
-                    for (auto &team : clb->getTeams())
-                    {
-                        string teamId = trimCopy(team.getIDDoi());
-                        string teamName = trimCopy(team.getTenDoi());
-                        string teamIdLower = toLowerCopy(teamId);
-                        string teamNameLower = toLowerCopy(teamName);
-
-                        if (!teamId.empty() && teamIdLower == teamKeyLower)
+                        if (idCT.empty() || hoTen.empty() || teamKeyRaw.empty())
                         {
-                            team.themCauThu(newPlayer);
-                            found = true;
-                            saveToJson(*clb);
-                            showMessage(u8"Đã thêm cầu thủ thành công!");
-                            inputs.clear();
-                            break;
+                            showMessage(u8"Vui lòng nhập Mã CT, Họ Tên và Mã/Tên Đội!");
+                            goto SKIP_ADD_PLAYER;
                         }
 
-                        if (!teamNameLower.empty() && teamNameLower.find(teamKeyLower) != string::npos)
+                        // Kiểm tra trùng mã cầu thủ (không phân biệt hoa thường)
+                        string idCTLower = idCT;
+                        transform(idCTLower.begin(), idCTLower.end(), idCTLower.begin(), ::tolower);
+
+                        for (auto &team : clb->getTeams())
                         {
-                            team.themCauThu(newPlayer);
-                            found = true;
-                            saveToJson(*clb);
-                            showMessage(u8"Đã thêm cầu thủ thành công!");
-                            inputs.clear();
-                            break;
-                        }
-                    }
+                            for (auto &p : team.getPlayers())
+                            {
+                                string existingID = p.getMaCauThu();
+                                string existingIDLower = existingID;
+                                transform(existingIDLower.begin(), existingIDLower.end(), existingIDLower.begin(), ::tolower);
 
-                    if (!found)
-                    {
-                        showMessage(u8"Không tìm thấy đội!");
+                                if (existingIDLower == idCTLower)
+                                {
+                                    showMessage(u8"Mã cầu thủ đã tồn tại!");
+                                    goto SKIP_ADD_PLAYER;
+                                }
+                            }
+                        }
+
+                        Player newPlayer(idCT, hoTen, ngaySinh, queQuan, sdt, idCT, viTri,
+                                         0, "", salary, "", "", cccd);
+
+                        string teamKeyLower = toLowerCopy(teamKeyRaw);
+                        bool found = false;
+
+                        for (auto &team : clb->getTeams())
+                        {
+                            string teamId = trimCopy(team.getIDDoi());
+                            string teamName = trimCopy(team.getTenDoi());
+                            string teamIdLower = toLowerCopy(teamId);
+                            string teamNameLower = toLowerCopy(teamName);
+
+                            if (!teamId.empty() && teamIdLower == teamKeyLower)
+                            {
+                                team.themCauThu(newPlayer);
+                                found = true;
+                                saveToJson(*clb);
+                                showMessage(u8"Đã thêm cầu thủ thành công!");
+                                inputs.clear();
+                                break;
+                            }
+
+                            if (!teamNameLower.empty() && teamNameLower.find(teamKeyLower) != string::npos)
+                            {
+                                team.themCauThu(newPlayer);
+                                found = true;
+                                saveToJson(*clb);
+                                showMessage(u8"Đã thêm cầu thủ thành công!");
+                                inputs.clear();
+                                break;
+                            }
+                        }
+
+                        if (!found)
+                        {
+                            showMessage(u8"Không tìm thấy đội!");
+                        }
                     }
                 }
+                catch (...)
+                {
+                    showMessage(u8"Lỗi nhập dữ liệu!");
+                }
             }
-            catch (...)
-            {
-                showMessage(u8"Lỗi nhập dữ liệu!");
-            }
-        }
+        } // Đóng ngoặc isAdmin cho phần thêm cầu thủ
     SKIP_ADD_PLAYER:;
 
         DrawTextEx2(u8"DANH SÁCH CẦU THỦ", contentX, 340, 22, TEXT_DARK);
@@ -3436,6 +3547,63 @@ public:
         }
     }
 
+    void drawDeleteTeamConfirmPopup()
+    {
+        if (!showDeleteTeamConfirm)
+            return;
+
+        DrawRectangle(0, 0, screenWidth, screenHeight, (Color){0, 0, 0, 180});
+
+        int popupWidth = 450;
+        int popupHeight = 200;
+        int popupX = (screenWidth - popupWidth) / 2;
+        int popupY = (screenHeight - popupHeight) / 2;
+
+        DrawRectangleRounded({(float)popupX, (float)popupY, (float)popupWidth, (float)popupHeight}, 0.05f, 10, CARD_BG);
+        DrawRectangleRounded({(float)popupX, (float)popupY, (float)popupWidth, 60}, 0.05f, 10, ACCENT_2);
+        DrawTextEx2(u8"XÁC NHẬN XÓA ĐỘI", popupX + 30, popupY + 18, 22, TEXT_LIGHT);
+
+        // Thông báo xác nhận
+        DrawTextEx2(u8"Bạn có chắc chắn muốn xóa đội:", popupX + 30, popupY + 80, 18, TEXT_DARK);
+        DrawTextEx2(deleteTeamName + u8"?", popupX + 30, popupY + 105, 18, ACCENT_1);
+
+        // Nút Hủy
+        Button cancelBtn;
+        cancelBtn.rect = {(float)(popupX + popupWidth / 2 - 170), (float)(popupY + 145), 150, 40};
+        cancelBtn.text = u8"HỦY";
+        cancelBtn.color = {149, 165, 166, 255};
+        cancelBtn.hoverColor = {127, 140, 141, 255};
+        cancelBtn.draw();
+
+        // Nút Xóa
+        Button confirmBtn;
+        confirmBtn.rect = {(float)(popupX + popupWidth / 2 + 20), (float)(popupY + 145), 150, 40};
+        confirmBtn.text = u8"XÓA";
+        confirmBtn.color = ACCENT_2;
+        confirmBtn.hoverColor = {192, 57, 43, 255};
+        confirmBtn.draw();
+
+        if (cancelBtn.isClicked() || IsKeyPressed(KEY_ESCAPE))
+        {
+            showDeleteTeamConfirm = false;
+            deleteTeamIndex = -1;
+            deleteTeamName = "";
+        }
+
+        if (confirmBtn.isClicked())
+        {
+            if (deleteTeamIndex >= 0 && deleteTeamIndex < (int)clb->getTeams().size())
+            {
+                clb->getTeams().erase(clb->getTeams().begin() + deleteTeamIndex);
+                saveToJson(*clb);
+                showMessage(u8"Đã xoá đội: " + deleteTeamName);
+            }
+            showDeleteTeamConfirm = false;
+            deleteTeamIndex = -1;
+            deleteTeamName = "";
+        }
+    }
+
     void drawStatsDetailPopup()
     {
         if (!showStatsDetail)
@@ -3651,33 +3819,36 @@ public:
         closeBtn.hoverColor = {127, 140, 141, 255};
         closeBtn.draw();
 
-        // Nút thêm trận đấu
-        Button addBtn;
-        addBtn.rect = {(float)(popupX + popupWidth - 210), (float)(popupY + 10), 110, 40};
-        addBtn.text = u8"THÊM";
-        addBtn.color = {46, 204, 113, 255};
-        addBtn.hoverColor = {39, 174, 96, 255};
-        addBtn.draw();
+        // Nút thêm trận đấu - chỉ hiển thị khi là Admin
+        if (isAdmin)
+        {
+            Button addBtn;
+            addBtn.rect = {(float)(popupX + popupWidth - 210), (float)(popupY + 10), 110, 40};
+            addBtn.text = u8"THÊM";
+            addBtn.color = {46, 204, 113, 255};
+            addBtn.hoverColor = {39, 174, 96, 255};
+            addBtn.draw();
+
+            if (addBtn.isClicked())
+            {
+                showAddMatch = true;
+                matchInputs.clear();
+                matchInputs.push_back(InputField({0, 0, 200, 38}, u8"Ngày (dd/mm/yyyy):", 20));
+                matchInputs.push_back(InputField({0, 0, 200, 38}, u8"Đối thủ:", 50));
+                matchInputs.push_back(InputField({0, 0, 200, 38}, u8"Giải đấu:", 50));
+                matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Bàn thắng:", 5));
+                matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Kiến tạo:", 5));
+                matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Thẻ vàng:", 5));
+                matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Thẻ đỏ:", 5));
+                matchInputs.push_back(InputField({0, 0, 300, 38}, u8"Ghi chú:", 100));
+            }
+        }
 
         if (closeBtn.isClicked() || IsKeyPressed(KEY_ESCAPE))
         {
             showMatchHistory = false;
             matchHistoryPlayer = nullptr;
             return;
-        }
-
-        if (addBtn.isClicked())
-        {
-            showAddMatch = true;
-            matchInputs.clear();
-            matchInputs.push_back(InputField({0, 0, 200, 38}, u8"Ngày (dd/mm/yyyy):", 20));
-            matchInputs.push_back(InputField({0, 0, 200, 38}, u8"Đối thủ:", 50));
-            matchInputs.push_back(InputField({0, 0, 200, 38}, u8"Giải đấu:", 50));
-            matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Bàn thắng:", 5));
-            matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Kiến tạo:", 5));
-            matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Thẻ vàng:", 5));
-            matchInputs.push_back(InputField({0, 0, 80, 38}, u8"Thẻ đỏ:", 5));
-            matchInputs.push_back(InputField({0, 0, 300, 38}, u8"Ghi chú:", 100));
         }
 
         // Thông tin tổng hợp
@@ -3748,15 +3919,18 @@ public:
                 string ghiChuShort = tran.ghiChu.length() > 12 ? tran.ghiChu.substr(0, 10) + "..." : tran.ghiChu;
                 DrawTextEx2(ghiChuShort, popupX + 750, y + 12, 16, TEXT_DARK);
 
-                // Nút xóa
-                Rectangle delRect = {(float)(popupX + 850), (float)(y + 7), 55, 32};
-                bool delHover = CheckCollisionPointRec(GetMousePosition(), delRect);
-                DrawRectangleRounded(delRect, 0.3f, 10, delHover ? (Color){192, 57, 43, 255} : ACCENT_2);
-                DrawTextEx2(u8"Xóa", popupX + 862, y + 12, 16, TEXT_LIGHT);
-
-                if (delHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                // Nút xóa - chỉ hiển thị khi là Admin
+                if (isAdmin)
                 {
-                    deleteIndex = i;
+                    Rectangle delRect = {(float)(popupX + 850), (float)(y + 7), 55, 32};
+                    bool delHover = CheckCollisionPointRec(GetMousePosition(), delRect);
+                    DrawRectangleRounded(delRect, 0.3f, 10, delHover ? (Color){192, 57, 43, 255} : ACCENT_2);
+                    DrawTextEx2(u8"Xóa", popupX + 862, y + 12, 16, TEXT_LIGHT);
+
+                    if (delHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                    {
+                        deleteIndex = i;
+                    }
                 }
             }
 
@@ -3765,8 +3939,8 @@ public:
 
         EndScissorMode();
 
-        // Xử lý xóa trận đấu
-        if (deleteIndex >= 0 && matchHistoryPlayer != nullptr)
+        // Xử lý xóa trận đấu - chỉ khi là Admin
+        if (isAdmin && deleteIndex >= 0 && matchHistoryPlayer != nullptr)
         {
             auto &lichSuRef = matchHistoryPlayer->getLichSuTranDau();
             lichSuRef.erase(lichSuRef.begin() + deleteIndex);
@@ -3819,32 +3993,35 @@ public:
         closeBtn.hoverColor = {127, 140, 141, 255};
         closeBtn.draw();
 
-        // Nút thêm thành tích
-        Button addBtn;
-        addBtn.rect = {(float)(popupX + popupWidth - 200), (float)(popupY + 10), 100, 40};
-        addBtn.text = u8"THÊM";
-        addBtn.color = {46, 204, 113, 255};
-        addBtn.hoverColor = {39, 174, 96, 255};
-        addBtn.draw();
+        // Nút thêm thành tích - chỉ hiển thị khi là Admin
+        static bool showAddAward = false;
+        static InputField awardNameInput({0, 0, 400, 38}, "", 100);
+        static InputField awardYearInput({0, 0, 150, 38}, "", 4);
+        static int selectedRank = 1; // 1=Vô địch, 2=Á quân, 3=Hạng ba
+
+        if (isAdmin)
+        {
+            Button addBtn;
+            addBtn.rect = {(float)(popupX + popupWidth - 200), (float)(popupY + 10), 100, 40};
+            addBtn.text = u8"THÊM";
+            addBtn.color = {46, 204, 113, 255};
+            addBtn.hoverColor = {39, 174, 96, 255};
+            addBtn.draw();
+
+            if (addBtn.isClicked())
+            {
+                showAddAward = true;
+                awardNameInput.text = "";
+                awardYearInput.text = "2025";
+                selectedRank = 1;
+            }
+        }
 
         if (closeBtn.isClicked() || IsKeyPressed(KEY_ESCAPE))
         {
             showHonorPopup = false;
             honorPopupPlayer = nullptr;
             return;
-        }
-
-        static bool showAddAward = false;
-        static InputField awardNameInput({0, 0, 400, 38}, "", 100);
-        static InputField awardYearInput({0, 0, 150, 38}, "", 4);
-        static int selectedRank = 1; // 1=Vô địch, 2=Á quân, 3=Hạng ba
-
-        if (addBtn.isClicked())
-        {
-            showAddAward = true;
-            awardNameInput.text = "";
-            awardYearInput.text = "2025";
-            selectedRank = 1;
         }
 
         // Lấy danh sách thành tích cùng đội và sắp xếp
@@ -3929,21 +4106,24 @@ public:
             DrawTextEx2(award.tenGiai, popupX + 120, rowY + 12, 17, TEXT_DARK);
             DrawTextEx2(to_string(award.nam), popupX + 460, rowY + 12, 17, TEXT_DARK);
 
-            // Nút xóa
-            Rectangle delRect = {(float)(popupX + popupWidth - 85), (float)(rowY + 7), 60, 30};
-            bool delHover = CheckCollisionPointRec(GetMousePosition(), delRect);
-            DrawRectangleRounded(delRect, 0.3f, 10, delHover ? (Color){192, 57, 43, 255} : ACCENT_2);
-            DrawTextEx2(u8"Xóa", popupX + popupWidth - 72, rowY + 11, 14, TEXT_LIGHT);
-
-            if (delHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            // Nút xóa - chỉ hiển thị khi là Admin
+            if (isAdmin)
             {
-                // Tìm index gốc trong vector chưa sắp xếp
-                for (int j = 0; j < (int)achievements.size(); j++)
+                Rectangle delRect = {(float)(popupX + popupWidth - 85), (float)(rowY + 7), 60, 30};
+                bool delHover = CheckCollisionPointRec(GetMousePosition(), delRect);
+                DrawRectangleRounded(delRect, 0.3f, 10, delHover ? (Color){192, 57, 43, 255} : ACCENT_2);
+                DrawTextEx2(u8"Xóa", popupX + popupWidth - 72, rowY + 11, 14, TEXT_LIGHT);
+
+                if (delHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
                 {
-                    if (achievements[j].tenGiai == award.tenGiai && achievements[j].nam == award.nam && achievements[j].xepHang == award.xepHang)
+                    // Tìm index gốc trong vector chưa sắp xếp
+                    for (int j = 0; j < (int)achievements.size(); j++)
                     {
-                        deleteIndex = j;
-                        break;
+                        if (achievements[j].tenGiai == award.tenGiai && achievements[j].nam == award.nam && achievements[j].xepHang == award.xepHang)
+                        {
+                            deleteIndex = j;
+                            break;
+                        }
                     }
                 }
             }
@@ -3951,8 +4131,8 @@ public:
             rowY += 50;
         }
 
-        // Xử lý xóa
-        if (deleteIndex >= 0)
+        // Xử lý xóa - chỉ khi là Admin
+        if (isAdmin && deleteIndex >= 0)
         {
             honorPopupPlayer->removeThanhTichDoi(deleteIndex);
             saveToJson(*clb);
@@ -4113,19 +4293,22 @@ public:
         closeBtn.hoverColor = {192, 57, 43, 255};
         closeBtn.draw();
 
-        // Nút thêm giải thưởng
+        // Nút thêm giải thưởng - chỉ hiển thị khi là Admin
         static bool showAddIndivAward = false;
 
-        Button addBtn;
-        addBtn.rect = {(float)(popupX + popupWidth - 180), (float)(popupY + 10), 80, 35};
-        addBtn.text = u8"THÊM";
-        addBtn.color = {46, 204, 113, 255};
-        addBtn.hoverColor = {39, 174, 96, 255};
-        addBtn.draw();
-
-        if (addBtn.isClicked())
+        if (isAdmin)
         {
-            showAddIndivAward = true;
+            Button addBtn;
+            addBtn.rect = {(float)(popupX + popupWidth - 180), (float)(popupY + 10), 80, 35};
+            addBtn.text = u8"THÊM";
+            addBtn.color = {46, 204, 113, 255};
+            addBtn.hoverColor = {39, 174, 96, 255};
+            addBtn.draw();
+
+            if (addBtn.isClicked())
+            {
+                showAddIndivAward = true;
+            }
         }
 
         if (closeBtn.isClicked() || (!showAddIndivAward && IsKeyPressed(KEY_ESCAPE)))
@@ -4186,21 +4369,24 @@ public:
             DrawTextEx2(award.tenGiai, popupX + 35, rowY + 12, 17, TEXT_DARK);
             DrawTextEx2(to_string(award.nam), popupX + 530, rowY + 12, 17, ACCENT_1);
 
-            // Nút xóa
-            Rectangle delRect = {(float)(popupX + popupWidth - 85), (float)(rowY + 7), 60, 30};
-            bool delHover = CheckCollisionPointRec(GetMousePosition(), delRect);
-            DrawRectangleRounded(delRect, 0.3f, 10, delHover ? (Color){192, 57, 43, 255} : ACCENT_2);
-            DrawTextEx2(u8"Xóa", popupX + popupWidth - 72, rowY + 11, 14, TEXT_LIGHT);
-
-            if (delHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            // Nút xóa - chỉ hiển thị khi là Admin
+            if (isAdmin)
             {
-                // Tìm index gốc trong vector chưa sắp xếp
-                for (int j = 0; j < (int)awards.size(); j++)
+                Rectangle delRect = {(float)(popupX + popupWidth - 85), (float)(rowY + 7), 60, 30};
+                bool delHover = CheckCollisionPointRec(GetMousePosition(), delRect);
+                DrawRectangleRounded(delRect, 0.3f, 10, delHover ? (Color){192, 57, 43, 255} : ACCENT_2);
+                DrawTextEx2(u8"Xóa", popupX + popupWidth - 72, rowY + 11, 14, TEXT_LIGHT);
+
+                if (delHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
                 {
-                    if (awards[j].tenGiai == award.tenGiai && awards[j].nam == award.nam && awards[j].xepHang == award.xepHang)
+                    // Tìm index gốc trong vector chưa sắp xếp
+                    for (int j = 0; j < (int)awards.size(); j++)
                     {
-                        deleteIndex = j;
-                        break;
+                        if (awards[j].tenGiai == award.tenGiai && awards[j].nam == award.nam && awards[j].xepHang == award.xepHang)
+                        {
+                            deleteIndex = j;
+                            break;
+                        }
                     }
                 }
             }
@@ -4208,8 +4394,8 @@ public:
             rowY += 50;
         }
 
-        // Xử lý xóa
-        if (deleteIndex >= 0)
+        // Xử lý xóa - chỉ khi là Admin
+        if (isAdmin && deleteIndex >= 0)
         {
             individualAwardPlayer->removeGiaiThuong(deleteIndex);
             saveToJson(*clb);
@@ -4390,22 +4576,25 @@ public:
             DrawRectangleRounded({(float)(popupX + 20), (float)yPos, (float)(popupWidth - 40), 40}, 0.1f, 8, (Color){155, 89, 182, 255});
             DrawTextEx2(team.getTenDoi(), popupX + 35, yPos + 10, 18, TEXT_LIGHT);
 
-            // Nút thêm danh hiệu cho đội
-            Rectangle addBtnRect = {(float)(popupX + popupWidth - 140), (float)(yPos + 5), 100, 30};
-            bool isAddHover = CheckCollisionPointRec(GetMousePosition(), addBtnRect);
-            DrawRectangleRounded(addBtnRect, 0.3f, 8, isAddHover ? Color{46, 204, 113, 255} : Color{39, 174, 96, 255});
-            int addTextW = MeasureTextEx2(u8"THÊM", 14);
-            DrawTextEx2(u8"THÊM", popupX + popupWidth - 140 + (100 - addTextW) / 2, yPos + 12, 14, TEXT_LIGHT);
-
-            if (isAddHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            // Nút thêm danh hiệu cho đội - chỉ hiển thị khi là Admin
+            if (isAdmin)
             {
-                showAddTeamAward = true;
-                addAwardTeam = &team;
-                teamAwardNameInput = InputField();
-                teamAwardNameInput.text = "";
-                teamAwardYearInput = InputField();
-                teamAwardYearInput.text = "2024";
-                selectedTeamRank = 1;
+                Rectangle addBtnRect = {(float)(popupX + popupWidth - 140), (float)(yPos + 5), 100, 30};
+                bool isAddHover = CheckCollisionPointRec(GetMousePosition(), addBtnRect);
+                DrawRectangleRounded(addBtnRect, 0.3f, 8, isAddHover ? Color{46, 204, 113, 255} : Color{39, 174, 96, 255});
+                int addTextW = MeasureTextEx2(u8"THÊM", 14);
+                DrawTextEx2(u8"THÊM", popupX + popupWidth - 140 + (100 - addTextW) / 2, yPos + 12, 14, TEXT_LIGHT);
+
+                if (isAddHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                {
+                    showAddTeamAward = true;
+                    addAwardTeam = &team;
+                    teamAwardNameInput = InputField();
+                    teamAwardNameInput.text = "";
+                    teamAwardYearInput = InputField();
+                    teamAwardYearInput.text = "2024";
+                    selectedTeamRank = 1;
+                }
             }
 
             yPos += 50;
@@ -4473,18 +4662,21 @@ public:
                     // Năm
                     DrawTextEx2(to_string(aw.nam), popupX + popupWidth - 180, rowY + 12, 16, ACCENT_1);
 
-                    // Nút xóa
-                    Rectangle delRect = {(float)(popupX + popupWidth - 100), (float)(rowY + 8), 50, 24};
-                    bool isDelHover = CheckCollisionPointRec(GetMousePosition(), delRect);
-                    DrawRectangleRounded(delRect, 0.3f, 6, isDelHover ? ACCENT_2 : Color{200, 200, 200, 255});
-                    int xW = MeasureTextEx2("X", 14);
-                    DrawTextEx2("X", popupX + popupWidth - 100 + (50 - xW) / 2, rowY + 11, 14, isDelHover ? TEXT_LIGHT : TEXT_DARK);
-
-                    if (isDelHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                    // Nút xóa - chỉ hiển thị khi là Admin
+                    if (isAdmin)
                     {
-                        team.removeDanhHieuTapThe(idx);
-                        saveToJson(*clb);
-                        showMessage(u8"Đã xóa danh hiệu tập thể!");
+                        Rectangle delRect = {(float)(popupX + popupWidth - 100), (float)(rowY + 8), 50, 24};
+                        bool isDelHover = CheckCollisionPointRec(GetMousePosition(), delRect);
+                        DrawRectangleRounded(delRect, 0.3f, 6, isDelHover ? ACCENT_2 : Color{200, 200, 200, 255});
+                        int xW = MeasureTextEx2("X", 14);
+                        DrawTextEx2("X", popupX + popupWidth - 100 + (50 - xW) / 2, rowY + 11, 14, isDelHover ? TEXT_LIGHT : TEXT_DARK);
+
+                        if (isDelHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                        {
+                            team.removeDanhHieuTapThe(idx);
+                            saveToJson(*clb);
+                            showMessage(u8"Đã xóa danh hiệu tập thể!");
+                        }
                     }
 
                     yPos += 45;
@@ -5085,40 +5277,43 @@ public:
                     showPlayerDetail = true;
                 }
 
-                // Nút SỬA
-                Button editBtn;
-                editBtn.rect = {(float)(contentX + contentWidth - 110), (float)(y + 5), 80, 35};
-                editBtn.text = u8"SỬA";
-                editBtn.color = {241, 196, 15, 255};
-                editBtn.hoverColor = {243, 156, 18, 255};
-                editBtn.draw();
-
-                if (editBtn.isClicked())
+                // Nút SỬA - chỉ hiển thị khi là Admin
+                if (isAdmin)
                 {
-                    // Tìm team index và player index
-                    for (int t = 0; t < (int)clb->getTeams().size(); t++)
+                    Button editBtn;
+                    editBtn.rect = {(float)(contentX + contentWidth - 110), (float)(y + 5), 80, 35};
+                    editBtn.text = u8"SỬA";
+                    editBtn.color = {241, 196, 15, 255};
+                    editBtn.hoverColor = {243, 156, 18, 255};
+                    editBtn.draw();
+
+                    if (editBtn.isClicked())
                     {
-                        auto &team = clb->getTeams()[t];
-                        if (team.getTenDoi() == teamName)
+                        // Tìm team index và player index
+                        for (int t = 0; t < (int)clb->getTeams().size(); t++)
                         {
-                            auto &players = team.getPlayers();
-                            for (int pi = 0; pi < (int)players.size(); pi++)
+                            auto &team = clb->getTeams()[t];
+                            if (team.getTenDoi() == teamName)
                             {
-                                if (players[pi].getID() == p.getID())
+                                auto &players = team.getPlayers();
+                                for (int pi = 0; pi < (int)players.size(); pi++)
                                 {
-                                    editingPlayer = p;
-                                    editingPlayerTeam = teamName;
-                                    editingTeamIndex = t;
-                                    editingPlayerIndex = pi;
-                                    showEditPlayer = true;
-                                    editInputs.clear();
-                                    break;
+                                    if (players[pi].getID() == p.getID())
+                                    {
+                                        editingPlayer = p;
+                                        editingPlayerTeam = teamName;
+                                        editingTeamIndex = t;
+                                        editingPlayerIndex = pi;
+                                        showEditPlayer = true;
+                                        editInputs.clear();
+                                        break;
+                                    }
                                 }
+                                break;
                             }
-                            break;
                         }
                     }
-                }
+                } // Đóng ngoặc isAdmin cho nút SỬA
 
                 int infoY = y + 55;
                 DrawTextEx2(u8"THÔNG TIN CÁ NHÂN", contentX + 30, infoY, 16, TEXT_DARK);
@@ -5620,28 +5815,31 @@ public:
 
                 formY += 170;
 
-                // Nút lưu
-                Button saveBtn;
-                saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
-                saveBtn.text = u8"LƯU";
-                saveBtn.color = {46, 204, 113, 255};
-                saveBtn.hoverColor = {39, 174, 96, 255};
-                saveBtn.draw();
-
-                if (saveBtn.isClicked() || (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S)))
+                // Nút lưu - chỉ hiển thị khi là Admin
+                if (isAdmin)
                 {
-                    // Sync data from InputFields first
-                    tempNgayBatDauChanThuong = healthInputs[0].text;
-                    tempDuKienHoiPhuc = healthInputs[1].text;
-                    tempGhiChuSucKhoe = healthInputs[2].text;
+                    Button saveBtn;
+                    saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
+                    saveBtn.text = u8"LƯU";
+                    saveBtn.color = {46, 204, 113, 255};
+                    saveBtn.hoverColor = {39, 174, 96, 255};
+                    saveBtn.draw();
 
-                    player.setTrangThaiSucKhoe(tempTrangThaiSucKhoe);
-                    player.setNgayBatDauChanThuong(tempNgayBatDauChanThuong);
-                    player.setDuKienHoiPhuc(tempDuKienHoiPhuc);
-                    player.setGhiChuSucKhoe(tempGhiChuSucKhoe);
-                    saveToJson(*clb);
-                    showMessage(u8"Đã lưu thông tin sức khỏe!");
-                }
+                    if (saveBtn.isClicked() || (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S)))
+                    {
+                        // Sync data from InputFields first
+                        tempNgayBatDauChanThuong = healthInputs[0].text;
+                        tempDuKienHoiPhuc = healthInputs[1].text;
+                        tempGhiChuSucKhoe = healthInputs[2].text;
+
+                        player.setTrangThaiSucKhoe(tempTrangThaiSucKhoe);
+                        player.setNgayBatDauChanThuong(tempNgayBatDauChanThuong);
+                        player.setDuKienHoiPhuc(tempDuKienHoiPhuc);
+                        player.setGhiChuSucKhoe(tempGhiChuSucKhoe);
+                        saveToJson(*clb);
+                        showMessage(u8"Đã lưu thông tin sức khỏe!");
+                    }
+                } // Đóng ngoặc isAdmin
 
                 break;
             }
@@ -5754,22 +5952,25 @@ public:
 
                 formY += 60;
 
-                // Nút lưu
-                Button saveBtn;
-                saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
-                saveBtn.text = u8"LƯU";
-                saveBtn.color = {46, 204, 113, 255};
-                saveBtn.hoverColor = {39, 174, 96, 255};
-                saveBtn.draw();
-
-                if (saveBtn.isClicked())
+                // Nút lưu - chỉ hiển thị khi là Admin
+                if (isAdmin)
                 {
-                    player.setMucTheLuc(tempMucTheLuc);
-                    player.setChieuCao(tempChieuCao);
-                    player.setCanNang(tempCanNang);
-                    player.setTiLeMo(tempTiLeMo);
-                    saveToJson(*clb);
-                    showMessage(u8"Đã lưu chỉ số thể lực!");
+                    Button saveBtn;
+                    saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
+                    saveBtn.text = u8"LƯU";
+                    saveBtn.color = {46, 204, 113, 255};
+                    saveBtn.hoverColor = {39, 174, 96, 255};
+                    saveBtn.draw();
+
+                    if (saveBtn.isClicked())
+                    {
+                        player.setMucTheLuc(tempMucTheLuc);
+                        player.setChieuCao(tempChieuCao);
+                        player.setCanNang(tempCanNang);
+                        player.setTiLeMo(tempTiLeMo);
+                        saveToJson(*clb);
+                        showMessage(u8"Đã lưu chỉ số thể lực!");
+                    }
                 }
 
                 // Vẽ dropdown ở cuối để nó nằm trên top
@@ -5994,27 +6195,30 @@ public:
                     }
                     DrawCircle(detailX + 30 + (i - 1) * 50 + 20, formY + 20, 18, starColor);
                     DrawTextEx2(to_string(i), detailX + 30 + (i - 1) * 50 + 15, formY + 10, 16, TEXT_LIGHT);
-                    if (isHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+                    if (isHovered && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && isAdmin)
                         tempDiemPhongDo = i;
                 }
 
                 formY += 70;
 
-                Button saveBtn;
-                saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
-                saveBtn.text = u8"LƯU";
-                saveBtn.color = {46, 204, 113, 255};
-                saveBtn.hoverColor = {39, 174, 96, 255};
-                saveBtn.draw();
-
-                if (saveBtn.isClicked())
+                if (isAdmin)
                 {
-                    player.setBanThangHieuSuat(tempBanThangHieuSuat);
-                    player.setKienTao(tempKienTao);
-                    player.setChuyenDung(tempChuyenDung);
-                    player.setDiemPhongDo(tempDiemPhongDo);
-                    saveToJson(*clb);
-                    showMessage(u8"Đã lưu hiệu suất thi đấu!");
+                    Button saveBtn;
+                    saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
+                    saveBtn.text = u8"LƯU";
+                    saveBtn.color = {46, 204, 113, 255};
+                    saveBtn.hoverColor = {39, 174, 96, 255};
+                    saveBtn.draw();
+
+                    if (saveBtn.isClicked())
+                    {
+                        player.setBanThangHieuSuat(tempBanThangHieuSuat);
+                        player.setKienTao(tempKienTao);
+                        player.setChuyenDung(tempChuyenDung);
+                        player.setDiemPhongDo(tempDiemPhongDo);
+                        saveToJson(*clb);
+                        showMessage(u8"Đã lưu hiệu suất thi đấu!");
+                    }
                 }
 
                 break;
@@ -6078,20 +6282,23 @@ public:
 
                 formY += 140;
 
-                Button saveBtn;
-                saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
-                saveBtn.text = u8"LƯU";
-                saveBtn.color = {46, 204, 113, 255};
-                saveBtn.hoverColor = {39, 174, 96, 255};
-                saveBtn.draw();
-
-                if (saveBtn.isClicked())
+                if (isAdmin)
                 {
-                    player.setDiemDanhGiaTap(tempDiemDanhGiaTap);
-                    player.setCuongDoTapLuyen(tempCuongDoTapLuyen);
-                    player.setGhiChuTapLuyen(tempGhiChuTapLuyen);
-                    saveToJson(*clb);
-                    showMessage(u8"Đã lưu khối lượng tập luyện!");
+                    Button saveBtn;
+                    saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
+                    saveBtn.text = u8"LƯU";
+                    saveBtn.color = {46, 204, 113, 255};
+                    saveBtn.hoverColor = {39, 174, 96, 255};
+                    saveBtn.draw();
+
+                    if (saveBtn.isClicked())
+                    {
+                        player.setDiemDanhGiaTap(tempDiemDanhGiaTap);
+                        player.setCuongDoTapLuyen(tempCuongDoTapLuyen);
+                        player.setGhiChuTapLuyen(tempGhiChuTapLuyen);
+                        saveToJson(*clb);
+                        showMessage(u8"Đã lưu khối lượng tập luyện!");
+                    }
                 }
 
                 break;
@@ -6162,21 +6369,24 @@ public:
 
                 formY += 140;
 
-                Button saveBtn;
-                saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
-                saveBtn.text = u8"LƯU";
-                saveBtn.color = {46, 204, 113, 255};
-                saveBtn.hoverColor = {39, 174, 96, 255};
-                saveBtn.draw();
-
-                if (saveBtn.isClicked())
+                if (isAdmin)
                 {
-                    player.setThaiDo(tempThaiDo);
-                    player.setCoViPham(tempCoViPham);
-                    player.setChiTietViPham(tempChiTietViPham);
-                    player.setGhiChuTinhThan(tempGhiChuTinhThan);
-                    saveToJson(*clb);
-                    showMessage(u8"Đã lưu thông tin kỷ luật!");
+                    Button saveBtn;
+                    saveBtn.rect = {(float)(detailX + detailWidth - 150), (float)formY, 120, 45};
+                    saveBtn.text = u8"LƯU";
+                    saveBtn.color = {46, 204, 113, 255};
+                    saveBtn.hoverColor = {39, 174, 96, 255};
+                    saveBtn.draw();
+
+                    if (saveBtn.isClicked())
+                    {
+                        player.setThaiDo(tempThaiDo);
+                        player.setCoViPham(tempCoViPham);
+                        player.setChiTietViPham(tempChiTietViPham);
+                        player.setGhiChuTinhThan(tempGhiChuTinhThan);
+                        saveToJson(*clb);
+                        showMessage(u8"Đã lưu thông tin kỷ luật!");
+                    }
                 }
 
                 break;
@@ -6203,6 +6413,274 @@ public:
             DrawTextEx2(subGuide, detailX + (detailWidth - subGuideW) / 2, iconY + 115, 16, (Color){150, 150, 150, 255});
         }
     }
+
+    void drawLoginScreen()
+    {
+        // Animated background với gradient đẹp hơn
+        static float animTime = 0;
+        animTime += GetFrameTime();
+
+        // Gradient background với hiệu ứng chuyển màu
+        Color topColor = {25, 42, 86, 255};     // Xanh đậm
+        Color bottomColor = {40, 60, 100, 255}; // Xanh nhạt hơn
+        DrawRectangleGradientV(0, 0, screenWidth, screenHeight, topColor, bottomColor);
+
+        // Vẽ các hình tròn trang trí với hiệu ứng động
+        for (int i = 0; i < 8; i++)
+        {
+            float offset = sin(animTime * 0.5f + i * 0.8f) * 20;
+            int cx = (screenWidth / 8) * i + 50;
+            int cy = screenHeight / 2 + (int)offset;
+            DrawCircle(cx, cy - 200, 80 + i * 15, (Color){255, 255, 255, 8});
+            DrawCircle(cx + 30, cy + 250, 60 + i * 10, (Color){255, 255, 255, 5});
+        }
+
+        // Vẽ các đường chéo trang trí
+        for (int i = 0; i < 5; i++)
+        {
+            DrawLineEx({(float)(i * 300 - 100), (float)screenHeight},
+                       {(float)(i * 300 + 200), 0}, 1, (Color){255, 255, 255, 15});
+        }
+
+        // Login box với shadow đẹp hơn
+        int boxWidth = 480;
+        int boxHeight = 520;
+        int boxX = (screenWidth - boxWidth) / 2;
+        int boxY = (screenHeight - boxHeight) / 2;
+
+        // Multiple shadow layers cho depth effect
+        DrawRectangleRounded({(float)(boxX + 15), (float)(boxY + 15), (float)boxWidth, (float)boxHeight}, 0.08f, 10, (Color){0, 0, 0, 30});
+        DrawRectangleRounded({(float)(boxX + 8), (float)(boxY + 8), (float)boxWidth, (float)boxHeight}, 0.08f, 10, (Color){0, 0, 0, 40});
+
+        // Main box với gradient nhẹ
+        DrawRectangleRounded({(float)boxX, (float)boxY, (float)boxWidth, (float)boxHeight}, 0.08f, 10, (Color){255, 255, 255, 250});
+
+        // Header với gradient đẹp
+        DrawRectangleRoundedGradientH({(float)boxX, (float)boxY, (float)boxWidth, 90}, 0.08f, 10,
+                                      (Color){52, 152, 219, 255}, (Color){41, 128, 185, 255});
+
+        // Logo/Icon container với hiệu ứng glow
+        int iconCenterX = boxX + boxWidth / 2;
+        int iconCenterY = boxY + 140;
+
+        // Glow effect
+        DrawCircle(iconCenterX, iconCenterY, 58, (Color){52, 152, 219, 40});
+        DrawCircle(iconCenterX, iconCenterY, 52, (Color){52, 152, 219, 60});
+        // Icon background
+        DrawCircle(iconCenterX, iconCenterY, 45, (Color){52, 152, 219, 255});
+        DrawCircleLines(iconCenterX, iconCenterY, 45, (Color){41, 128, 185, 255});
+
+        // Icon bóng đá đơn giản
+        DrawCircle(iconCenterX, iconCenterY, 25, WHITE);
+        DrawCircleLines(iconCenterX, iconCenterY, 25, (Color){52, 152, 219, 255});
+        // Vẽ pattern bóng đá
+        DrawCircle(iconCenterX, iconCenterY - 8, 8, (Color){52, 152, 219, 255});
+        DrawCircle(iconCenterX - 12, iconCenterY + 8, 6, (Color){52, 152, 219, 255});
+        DrawCircle(iconCenterX + 12, iconCenterY + 8, 6, (Color){52, 152, 219, 255});
+
+        // Title với shadow
+        string title = u8"QUẢN LÝ CÂU LẠC BỘ";
+        int titleW = MeasureTextEx2(title, 26);
+        DrawTextEx2(title, boxX + (boxWidth - titleW) / 2 + 1, boxY + 26, 26, (Color){0, 0, 0, 50});
+        DrawTextEx2(title, boxX + (boxWidth - titleW) / 2, boxY + 25, 26, TEXT_LIGHT);
+
+        string subtitle = u8"BÓNG ĐÁ VIỆT NAM";
+        int subW = MeasureTextEx2(subtitle, 16);
+        DrawTextEx2(subtitle, boxX + (boxWidth - subW) / 2, boxY + 58, 16, (Color){255, 255, 255, 200});
+
+        int fieldY = boxY + 210;
+
+        // Username field với icon
+        DrawTextEx2(u8"Tên đăng nhập", boxX + 50, fieldY, 15, (Color){100, 100, 100, 255});
+        fieldY += 28;
+
+        Rectangle usernameRect = {(float)(boxX + 50), (float)fieldY, (float)(boxWidth - 100), 50};
+        bool usernameHover = CheckCollisionPointRec(GetMousePosition(), usernameRect);
+        Color usernameBg = loginActiveField == 0 ? (Color){240, 248, 255, 255} : (usernameHover ? (Color){248, 250, 252, 255} : (Color){250, 250, 250, 255});
+        Color usernameBorder = loginActiveField == 0 ? (Color){52, 152, 219, 255} : (usernameHover ? (Color){150, 180, 200, 255} : (Color){220, 220, 220, 255});
+
+        DrawRectangleRounded(usernameRect, 0.15f, 10, usernameBg);
+        DrawRectangleRoundedLinesEx(usernameRect, 0.15f, 10, loginActiveField == 0 ? 2 : 1, usernameBorder);
+
+        // Icon user
+        DrawCircle(boxX + 75, fieldY + 25, 12, (Color){52, 152, 219, loginActiveField == 0 ? (unsigned char)255 : (unsigned char)150});
+        DrawTextEx2("U", boxX + 68, fieldY + 15, 16, TEXT_LIGHT);
+
+        // Input text
+        string displayUsername = loginUsername.empty() ? u8"Nhập tên đăng nhập..." : loginUsername;
+        Color usernameTextColor = loginUsername.empty() ? (Color){180, 180, 180, 255} : TEXT_DARK;
+        DrawTextEx2(displayUsername, boxX + 100, fieldY + 15, 18, usernameTextColor);
+
+        // Cursor nhấp nháy
+        if (loginActiveField == 0 && ((int)(animTime * 2) % 2 == 0))
+        {
+            int cursorX = boxX + 100 + MeasureTextEx2(loginUsername, 18);
+            DrawRectangle(cursorX, fieldY + 12, 2, 26, ACCENT_1);
+        }
+
+        if (CheckCollisionPointRec(GetMousePosition(), usernameRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            loginActiveField = 0;
+        }
+
+        fieldY += 70;
+
+        // Password field với icon
+        DrawTextEx2(u8"Mật khẩu", boxX + 50, fieldY, 15, (Color){100, 100, 100, 255});
+        fieldY += 28;
+
+        Rectangle passwordRect = {(float)(boxX + 50), (float)fieldY, (float)(boxWidth - 100), 50};
+        bool passwordHover = CheckCollisionPointRec(GetMousePosition(), passwordRect);
+        Color passwordBg = loginActiveField == 1 ? (Color){240, 248, 255, 255} : (passwordHover ? (Color){248, 250, 252, 255} : (Color){250, 250, 250, 255});
+        Color passwordBorder = loginActiveField == 1 ? (Color){52, 152, 219, 255} : (passwordHover ? (Color){150, 180, 200, 255} : (Color){220, 220, 220, 255});
+
+        DrawRectangleRounded(passwordRect, 0.15f, 10, passwordBg);
+        DrawRectangleRoundedLinesEx(passwordRect, 0.15f, 10, loginActiveField == 1 ? 2 : 1, passwordBorder);
+
+        // Icon lock
+        DrawRectangle(boxX + 68, fieldY + 18, 14, 12, (Color){52, 152, 219, loginActiveField == 1 ? (unsigned char)255 : (unsigned char)150});
+        DrawRectangleRounded({(float)(boxX + 66), (float)(fieldY + 10), 18, 14}, 0.5f, 8, (Color){0, 0, 0, 0});
+        DrawRectangleRoundedLinesEx({(float)(boxX + 68), (float)(fieldY + 8), 14, 12}, 0.5f, 8, 2, (Color){52, 152, 219, loginActiveField == 1 ? (unsigned char)255 : (unsigned char)150});
+
+        // Masked password hoặc placeholder
+        string maskedPassword = "";
+        for (size_t i = 0; i < loginPassword.length(); i++)
+            maskedPassword += ".";
+        string displayPassword = loginPassword.empty() ? u8"Nhập mật khẩu..." : maskedPassword;
+        Color passwordTextColor = loginPassword.empty() ? (Color){180, 180, 180, 255} : TEXT_DARK;
+        DrawTextEx2(displayPassword, boxX + 100, fieldY + 15, 18, passwordTextColor);
+
+        // Cursor nhấp nháy cho password
+        if (loginActiveField == 1 && ((int)(animTime * 2) % 2 == 0))
+        {
+            int cursorX = boxX + 100 + MeasureTextEx2(maskedPassword, 18);
+            DrawRectangle(cursorX, fieldY + 12, 2, 26, ACCENT_1);
+        }
+
+        if (CheckCollisionPointRec(GetMousePosition(), passwordRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            loginActiveField = 1;
+        }
+
+        // Handle keyboard input
+        int key = GetCharPressed();
+        while (key > 0)
+        {
+            if (key >= 32 && key <= 126)
+            {
+                if (loginActiveField == 0 && loginUsername.length() < 20)
+                {
+                    loginUsername += (char)key;
+                }
+                else if (loginActiveField == 1 && loginPassword.length() < 20)
+                {
+                    loginPassword += (char)key;
+                }
+            }
+            key = GetCharPressed();
+        }
+
+        // Backspace
+        if (IsKeyPressed(KEY_BACKSPACE) || IsKeyPressedRepeat(KEY_BACKSPACE))
+        {
+            if (loginActiveField == 0 && !loginUsername.empty())
+            {
+                loginUsername.pop_back();
+            }
+            else if (loginActiveField == 1 && !loginPassword.empty())
+            {
+                loginPassword.pop_back();
+            }
+        }
+
+        // Tab to switch fields
+        if (IsKeyPressed(KEY_TAB))
+        {
+            loginActiveField = (loginActiveField + 1) % 2;
+        }
+
+        fieldY += 60;
+
+        // Error message hiển thị giữa mật khẩu và nút đăng nhập
+        if (!loginError.empty() && loginErrorTimer > 0)
+        {
+            loginErrorTimer -= GetFrameTime();
+            if (loginErrorTimer <= 0)
+            {
+                loginError = "";
+                loginErrorTimer = 0;
+            }
+            else
+            {
+                // Tính alpha dựa trên thời gian còn lại (fade out trong 0.3s cuối)
+                float alpha = loginErrorTimer < 0.3f ? (loginErrorTimer / 0.3f) : 1.0f;
+                int errW = MeasureTextEx2(loginError, 14);
+                // Error background với fade - nền đỏ nổi bật
+                DrawRectangleRounded({(float)(boxX + (boxWidth - errW) / 2 - 15), (float)(fieldY), (float)(errW + 30), 28}, 0.4f, 8, (Color){231, 76, 60, (unsigned char)(230 * alpha)});
+                DrawTextEx2(loginError, boxX + (boxWidth - errW) / 2, fieldY + 6, 14, (Color){255, 255, 255, (unsigned char)(255 * alpha)});
+            }
+        }
+
+        fieldY += 25;
+
+        // Login button với hiệu ứng đẹp
+        Rectangle loginBtnRect = {(float)(boxX + 50), (float)fieldY, (float)(boxWidth - 100), 55};
+        bool loginBtnHover = CheckCollisionPointRec(GetMousePosition(), loginBtnRect);
+
+        // Button gradient
+        Color btnColor1 = loginBtnHover ? (Color){41, 128, 185, 255} : (Color){52, 152, 219, 255};
+        Color btnColor2 = loginBtnHover ? (Color){35, 110, 160, 255} : (Color){41, 128, 185, 255};
+
+        DrawRectangleRoundedGradientH(loginBtnRect, 0.2f, 10, btnColor1, btnColor2);
+
+        string btnText = u8"ĐĂNG NHẬP";
+        int btnTextW = MeasureTextEx2(btnText, 20);
+        DrawTextEx2(btnText, boxX + (boxWidth - btnTextW) / 2 + 1, fieldY + 17, 20, (Color){0, 0, 0, 50});
+        DrawTextEx2(btnText, boxX + (boxWidth - btnTextW) / 2, fieldY + 16, 20, TEXT_LIGHT);
+
+        // Handle login
+        bool loginClicked = loginBtnHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON);
+        if (loginClicked || IsKeyPressed(KEY_ENTER))
+        {
+            // Admin account
+            if (loginUsername == "admin" && loginPassword == "admin123")
+            {
+                isLoggedIn = true;
+                isAdmin = true;
+                loginError = "";
+            }
+            // User account
+            else if (loginUsername == "user" && loginPassword == "user123")
+            {
+                isLoggedIn = true;
+                isAdmin = false;
+                loginError = "";
+            }
+            else
+            {
+                loginError = u8"Sai tên đăng nhập hoặc mật khẩu!";
+                loginErrorTimer = 1.5f; // Hiển thị trong 1.5 giây
+            }
+        }
+
+        // Footer - Info text với thiết kế đẹp hơn
+        int footerY = boxY + boxHeight - 45;
+        DrawLine(boxX + 50, footerY, boxX + boxWidth - 50, footerY, (Color){230, 230, 230, 255});
+
+        // Admin info
+        DrawCircle(boxX + 68, footerY + 15, 8, (Color){46, 204, 113, 255});
+        DrawTextEx2(u8"Admin: admin / admin123", boxX + 85, footerY + 7, 13, (Color){100, 100, 100, 255});
+
+        // User info
+        DrawCircle(boxX + 68, footerY + 35, 8, (Color){52, 152, 219, 255});
+        DrawTextEx2(u8"User: user / user123", boxX + 85, footerY + 27, 13, (Color){100, 100, 100, 255});
+
+        // Copyright
+        string copyright = u8"© 2024 Football Club Manager";
+        int cpW = MeasureTextEx2(copyright, 12);
+        DrawTextEx2(copyright, (screenWidth - cpW) / 2, screenHeight - 30, 12, (Color){255, 255, 255, 100});
+    }
+
     void run()
     {
         initColors();
@@ -6242,46 +6720,80 @@ public:
             BeginDrawing();
             ClearBackground(CONTENT_BG);
 
-            drawSidebar();
-
-            switch (currentTab)
+            if (!isLoggedIn)
             {
-            case 0:
-                drawDashboard();
-                break;
-            case 1:
-                drawTeams();
-                break;
-            case 2:
-                drawPlayers();
-                break;
-            case 3:
-                drawHealthPerformance();
-                break;
-            case 4:
-                drawAchievements();
-                break;
-            case 5:
-                drawStatistics();
-                break;
-            case 6:
-                drawSearch();
-                break;
+                // Hiển thị màn hình đăng nhập
+                drawLoginScreen();
+            }
+            else
+            {
+                // Hiển thị giao diện chính
+                drawSidebar();
+
+                switch (currentTab)
+                {
+                case 0:
+                    drawDashboard();
+                    break;
+                case 1:
+                    drawTeams();
+                    break;
+                case 2:
+                    drawPlayers();
+                    break;
+                case 3:
+                    drawHealthPerformance();
+                    break;
+                case 4:
+                    drawAchievements();
+                    break;
+                case 5:
+                    drawStatistics();
+                    break;
+                case 6:
+                    drawSearch();
+                    break;
+                }
+
+                drawMessage();
+                drawPlayerDetailPopup();
+                drawEditPlayerPopup();
+                drawEditHLVPopup();
+                drawEditRolePopup();
+                drawDeleteConfirmPopup();
+                drawDeleteTeamConfirmPopup();
+                drawStatsDetailPopup();
+                drawMatchHistoryPopup();
+                drawAddMatchPopup();
+                drawHonorPopup();
+                drawIndividualAwardPopup();
+                drawTeamAwardPopup();
+                drawEditTeamPopup();
+
+                // Hiển thị role ở góc trên phải
+                string roleText = isAdmin ? u8"[ADMIN]" : u8"[USER - Chỉ xem]";
+                Color roleColor = isAdmin ? (Color){46, 204, 113, 255} : (Color){241, 196, 15, 255};
+                int roleW = MeasureTextEx2(roleText, 16);
+                DrawTextEx2(roleText, screenWidth - roleW - 20, 10, 16, roleColor);
+
+                // Nút đăng xuất
+                Button logoutBtn;
+                logoutBtn.rect = {(float)(screenWidth - 100), 35, 80, 30};
+                logoutBtn.text = u8"Đăng xuất";
+                logoutBtn.color = {149, 165, 166, 255};
+                logoutBtn.hoverColor = {127, 140, 141, 255};
+                logoutBtn.draw();
+
+                if (logoutBtn.isClicked())
+                {
+                    isLoggedIn = false;
+                    isAdmin = false;
+                    loginUsername = "";
+                    loginPassword = "";
+                    loginError = "";
+                }
             }
 
-            drawMessage();
-            drawPlayerDetailPopup();
-            drawEditPlayerPopup();
-            drawEditHLVPopup();
-            drawEditRolePopup();
-            drawDeleteConfirmPopup();
-            drawStatsDetailPopup();
-            drawMatchHistoryPopup();
-            drawAddMatchPopup();
-            drawHonorPopup();
-            drawIndividualAwardPopup();
-            drawTeamAwardPopup();
-            drawEditTeamPopup();
             EndDrawing();
         }
 
