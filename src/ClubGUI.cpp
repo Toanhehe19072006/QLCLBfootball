@@ -5329,7 +5329,7 @@ public:
                 DrawTextEx2(u8"THÀNH TÍCH", contentX + 30, infoY, 16, TEXT_DARK);
                 infoY += 25;
 
-                DrawTextEx2(u8"Bàn thắng: " + to_string(p.getBanThang()), contentX + 40, infoY, 14, ACCENT_2);
+                DrawTextEx2(u8"Bàn thắng: " + to_string(p.getTongBanThangTuLichSu()), contentX + 40, infoY, 14, ACCENT_2);
                 DrawTextEx2(u8"Lương: " + formatVND(p.getLuong(), true), contentX + 240, infoY, 14, {46, 204, 113, 255});
                 DrawTextEx2(u8"Đội: " + teamName, contentX + 400, infoY, 14, ACCENT_1);
 
